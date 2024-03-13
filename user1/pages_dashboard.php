@@ -3,7 +3,7 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['account_id'];
+$account_id = $_SESSION['account_id'];
 
 //clear notifications and alert user that they are cleared
 if (isset($_GET['Clear_Notifications'])) {
@@ -27,39 +27,31 @@ if (isset($_GET['Clear_Notifications'])) {
     */
 
 //return total number of ibank clients
-$result = "SELECT count(*) FROM iB_clients";
+$result = "SELECT acc_type FROM iB_bankaccounts where account_id=$account_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
-$stmt->bind_result($iBClients);
+$stmt->bind_result($iBacctype);
 $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Staffs
-$result = "SELECT count(*) FROM iB_staff";
+$result = "SELECT account_number FROM iB_bankaccounts where account_id=$account_id" ;
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
-$stmt->bind_result($iBStaffs);
+$stmt->bind_result($iBaccountnumber);
 $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Account Types
-$result = "SELECT count(*) FROM iB_Acc_types";
+$result = "SELECT name FROM iB_bankaccounts where account_id=$account_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
-$stmt->bind_result($iB_AccsType);
-$stmt->fetch();
-$stmt->close();
-
-//return total number of iBank Accounts
-$result = "SELECT count(*) FROM iB_bankAccounts";
-$stmt = $mysqli->prepare($result);
-$stmt->execute();
-$stmt->bind_result($iB_Accs);
+$stmt->bind_result($iBname);
 $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Deposits
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit' and account_id=$account_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_deposits);
@@ -67,7 +59,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Withdrawals
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal' and account_id=$account_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_withdrawal);
@@ -77,7 +69,7 @@ $stmt->close();
 
 
 //return total number of iBank Transfers
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Transfer' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Transfer' and account_id=$account_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_Transfers);
@@ -85,7 +77,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of  iBank initial cash->balances
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions where account_id=$account_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($acc_amt);
@@ -96,13 +88,14 @@ $TotalBalInAccount = ($iB_deposits)  - (($iB_withdrawal) + ($iB_Transfers));
 
 
 //ibank money in the wallet
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions where account_id=$account_id ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($new_amt);
 $stmt->fetch();
 $stmt->close();
 //Withdrawal Computations
+
 
 ?>
 <!-- Log on to codeastro.com for more projects! -->
@@ -154,7 +147,7 @@ $stmt->close();
                 <div class="info-box-content">
                   <span class="info-box-text"> Account Type</span>
                   <span class="info-box-number">
-                    <?php echo $iBClients; ?>
+                    <?php echo $iBacctype; ?>
                   </span>
                 </div>
               </div>
@@ -170,7 +163,7 @@ $stmt->close();
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-briefcase"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text"> Account Number</span>
-                  <span class="info-box-number"><?php echo $iB_AccsType; ?></span>
+                  <span class="info-box-number"><?php echo $iBaccountnumber; ?></span>
                 </div>
               </div>
             </div>
@@ -182,7 +175,7 @@ $stmt->close();
                 <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-users"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text"> User Name</span>
-                  <span class="info-box-number"><?php echo $iB_Accs; ?></span>
+                  <span class="info-box-number"><?php echo $iBname; ?></span>
                 </div>
               </div>
             </div>
@@ -362,7 +355,7 @@ $stmt->close();
                       <tbody>
                         <?php
                         //Get latest transactions 
-                        $ret = "SELECT * FROM `iB_Transactions` ORDER BY `iB_Transactions`.`created_at` DESC ";
+                        $ret = "SELECT * FROM `iB_Transactions` where account_id=$account_id ORDER BY `iB_Transactions`.`created_at` DESC ";
                         $stmt = $mysqli->prepare($ret);
                         $stmt->execute(); //ok
                         $res = $stmt->get_result();
