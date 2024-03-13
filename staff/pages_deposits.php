@@ -78,7 +78,7 @@ $staff_id = $_SESSION['staff_id'];
 
                       <tr>
                         <td><?php echo $cnt; ?></td>
-                        <td><?php echo $row->acc_name; ?></td>
+                        <td><?php echo $row->name; ?></td>
                         <td><?php echo $row->account_number; ?></td>
                         <td><?php echo $row->acc_rates; ?>%</td>
                         <td><?php echo $row->acc_type; ?></td>
