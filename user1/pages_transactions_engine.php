@@ -3,7 +3,7 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['staff_id'];
+$account_id = $_SESSION['account_id'];
 //roll back transaction
 if (isset($_GET['RollBack_Transaction'])) {
   $id = intval($_GET['RollBack_Transaction']);
@@ -82,7 +82,7 @@ if (isset($_GET['RollBack_Transaction'])) {
                   <tbody>
                     <?php
                     //Get latest transactions 
-                    $ret = "SELECT * FROM `iB_Transactions` ORDER BY `iB_Transactions`.`created_at` DESC ";
+                    $ret = "SELECT * FROM `iB_Transactions` where account_id=$account_id ORDER BY `iB_Transactions`.`created_at` DESC ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
