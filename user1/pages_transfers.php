@@ -3,7 +3,7 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$client_id = $_SESSION['client_id'];
+$account_id = $_SESSION['account_id'];
 
 ?>
 
@@ -77,7 +77,7 @@ $client_id = $_SESSION['client_id'];
 
                       <tr>
                         <td><?php echo $cnt; ?></td>
-                        <td><?php echo $row->acc_name; ?></td>
+                        <td><?php echo $row->name; ?></td>
                         <td><?php echo $row->account_number; ?></td>
                         <td><?php echo $row->acc_rates; ?>%</td>
                         <td><?php echo $row->acc_type; ?></td>
