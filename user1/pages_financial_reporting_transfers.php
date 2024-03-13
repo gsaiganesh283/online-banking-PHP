@@ -3,7 +3,7 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['staff_id'];
+$account_id = $_SESSION['account_id'];
 
 ?>
 
@@ -67,7 +67,7 @@ $staff_id = $_SESSION['staff_id'];
                   <tbody>
                     <?php
                     //Get latest deposits transactions 
-                    $ret = "SELECT * FROM  iB_Transactions  WHERE tr_type = 'Transfer' ";
+                    $ret = "SELECT * FROM  iB_Transactions  WHERE tr_type = 'Transfer' and account_id=$account_id";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
