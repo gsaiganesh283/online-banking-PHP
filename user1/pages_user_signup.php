@@ -6,32 +6,26 @@ include('conf/config.php');
 if (isset($_POST['create_account'])) {
   //Register  Client
   $name = $_POST['name'];
-  $acctype=$_POST['acc_type'];
-  $Aadhar = $_POST['client_national_id'];
+  $gender= $_POST['gender'];
+  $acc_type=$_POST['acc_type'];
+  $client_national_id = $_POST['client_national_id'];
   $client_number = $_POST['client_number'];
-  $phone = $_POST['client_phone'];
-  $email = $_POST['client_email'];
-  $address= $_POST['client_adr'];
-  $DOB= $_POST['dob'];
-  $PanNO = $_POST['pan_no'];
-  $signature= $_POST['sign'];
-  $gudname = $_POST['gud_name'];
-  $gudAadhar = $_POST['gud_national_id'];
-  $gudphone = $_POST['gud_phone'];
-  $gudemail = $_POST['gud_mail_id'];
-  $gudPanNO = $_POST['gud_pan_no'];
-  $gudsignature= $_POST['gud_sign'];
-  $gudaddress  = $_POST['gud_adr'];
+  $phone = $_POST['phone'];
+  $email = $_POST['email'];
+  $address= $_POST['address'];
+  $dob= $_POST['dob'];
+  $pan_no = $_POST['pan_no'];
+  $sign= $_POST['sign'];
   $password = sha1(md5($_POST['password']));
 
   //$profile_pic  = $_FILES["profile_pic"]["name"];
   //move_uploaded_file($_FILES["profile_pic"]["tmp_name"],"dist/img/".$_FILES["profile_pic"]["name"]);
 
   //Insert Captured information to a database table
-  $query = "INSERT INTO iB_bankaccounts (name, acc_type,client_national_id, client_number, client_phone, client_email,client_adr,dob,pan_no,sign,gud_name,gud_national_id,gud_phone,gud_mail_id,gud_pan_no,gud_sign,gud_adr, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  $query = "INSERT INTO iB_bankaccounts (name, gender,acc_type,client_national_id, client_number, phone, email,address,dob,pan_no,sign, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   $stmt = $mysqli->prepare($query);
   //bind paramaters
-  $rc = $stmt->bind_param('sssssssssssssssss', $name,$acctype,$Aadhar,$client_number,$phone,$email,$address,$DOB,$PanNO,$signature,$gudname,$gudAadhar,$gudphone,$gudemail,$gudPanNO,$gudsignature,$gudaddress, $password);
+  $rc = $stmt->bind_param('ssssssssssss', $name,$gender,$acc_type,$client_national_id,$client_number,$phone,$email,$address,$dob,$pan_no,$sign,$password);
   $stmt->execute();
 
   //declare a varible which will be passed to alert function
@@ -74,7 +68,15 @@ while ($auth = $res->fetch_object()) {
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="text" name="acctype" required class="form-control" placeholder="Account Type">
+              <input type="text" requried name="gender" required class="form-control" placeholder="Gender">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" name="acc_type" required class="form-control" placeholder="Account Type">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -102,7 +104,7 @@ while ($auth = $res->fetch_object()) {
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="text" name="client_phone" required class="form-control" placeholder="Phone Number">
+              <input type="text" name="phone" required class="form-control" placeholder="Phone Number">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-phone"></span>
@@ -125,76 +127,27 @@ while ($auth = $res->fetch_object()) {
                 </div>
               </div>
               <div class="input-group mb-3">
-              <input type="text" name="DOB" required class="form-control" placeholder="Data of Birth dd/mm/yyyy">
+              <input type="text" name="dob" required class="form-control" placeholder="Data of Birth (dd/mm/yyyy)">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-marker"></span>
                 </div>
               </div>
               <div class="input-group mb-3">
-              <input type="text" name="PanNO" required class="form-control" placeholder="Pan No">
+              <input type="text" name="pan_no" required class="form-control" placeholder="Pan Card No">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
                 </div>
               </div>
               <div class="input-group mb-3">
-              <input type="text" name="signature" required class="form-control" placeholder="User Address">
+              <input type="text" name="signature" required class="form-control" placeholder="Signature">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
                 </div>
               </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudname" required class="form-control" placeholder="Guardian Name">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudaadhar" required class="form-control" placeholder="Guardian Aadhar">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudphone" required class="form-control" placeholder="Guardian Phone">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudemail" required class="form-control" placeholder="Guardian Email ID">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudPanNO" required class="form-control" placeholder="Guardian Pan No">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudsignature" required class="form-control" placeholder="Guardian Signature">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-              </div>
-              <div class="input-group mb-3">
-              <input type="text" name="gudaddress" required class="form-control" placeholder="Guardian Address">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
+              
               </div>
             </div><!-- Log on to codeastro.com for more projects! -->
             <div class="input-group mb-3">
@@ -206,10 +159,10 @@ while ($auth = $res->fetch_object()) {
               </div>
             </div>
             <div class="row">
-              <div class="col-12">
+              <div class="col-4">
               </div>
               <!-- /.col -->
-              <div class="col-6">
+              <div class="col-8">
                 <button type="submit" name="create_account" class="btn btn-success btn-block">Sign Up</button>
               </div>
               <!-- /.col -->

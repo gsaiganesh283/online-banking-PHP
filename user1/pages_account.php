@@ -3,7 +3,7 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['staff_id'];
+$staff_id = $_SESSION['acc_id'];
 //update logged in user account
 if (isset($_POST['update_staff_account'])) {
     //Register  Staff
