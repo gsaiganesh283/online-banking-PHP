@@ -3,47 +3,48 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['acc_id'];
+$account_id = $_SESSION['account_id'];
 //update logged in user account
-if (isset($_POST['update_staff_account'])) {
+if (isset($_POST['update_user_account'])) {
     //Register  Staff
     $name = $_POST['name'];
-    $staff_id = $_SESSION['staff_id'];
+    $account_id = $_SESSION['account_id'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     //$password = sha1(md5($_POST['password']));
-    $sex  = $_POST['sex'];
+    $gender  = $_POST['gender'];
+    $account_number= $_POST['account_number'];
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
     move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
 
     //Insert Captured information to a database table
-    $query = "UPDATE iB_staff SET name=?, phone=?, email=?, sex=?, profile_pic=? WHERE staff_id=?";
+    $query = "UPDATE iB_bankaccounts SET name=?, phone=?, email=?, gender=?, profile_pic=? WHERE account_id=?";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssi', $name, $phone, $email, $sex, $profile_pic, $staff_id);
+    $rc = $stmt->bind_param('sssssi', $name, $phone, $email, $gender, $profile_pic, $account_id);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
     if ($stmt) {
-        $success = "Staff Account Udated";
+        $success = "User Account Udated";
     } else {
         $err = "Please Try Again Or Try Later";
     }
 }
 //change password
-if (isset($_POST['change_staff_password'])) {
+if (isset($_POST['change_user_password'])) {
     $password = sha1(md5($_POST['password']));
-    $staff_id = $_SESSION['staff_id'];
+    $staff_id = $_SESSION['account_id'];
     //insert unto certain table in database
-    $query = "UPDATE iB_staff  SET password=? WHERE  staff_id=?";
+    $query = "UPDATE iB_bankaccounts  SET password=? WHERE  account_id=?";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('si', $password, $staff_id);
+    $rc = $stmt->bind_param('si', $password, $account_id);
     $stmt->execute();
     //declare a varible which will be passed to alert function
     if ($stmt) {
-        $success = "Staff Password Updated";
+        $success = "user Password Updated";
     } else {
         $err = "Please Try Again Or Try Later";
     }
@@ -70,10 +71,10 @@ if (isset($_POST['change_staff_password'])) {
         <div class="content-wrapper">
             <!-- Content Header with logged in user details (Page header) -->
             <?php
-            $staff_id = $_SESSION['staff_id'];
-            $ret = "SELECT * FROM  iB_staff  WHERE staff_id = ? ";
+            $account_id = $_SESSION['account_id'];
+            $ret = "SELECT * FROM  iB_bankaccounts  WHERE account_id = ? ";
             $stmt = $mysqli->prepare($ret);
-            $stmt->bind_param('i', $staff_id);
+            $stmt->bind_param('i', $account_id);
             $stmt->execute(); //ok
             $res = $stmt->get_result();
             while ($row = $res->fetch_object()) {
@@ -141,10 +142,10 @@ if (isset($_POST['change_staff_password'])) {
                                                 <b>Phone: </b> <a class="float-right"><?php echo $row->phone; ?></a>
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Account No: </b> <a class="float-right"><?php echo $row->staff_number; ?></a>
+                                                <b>Account No: </b> <a class="float-right"><?php echo $row->account_number; ?></a>
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Gender: </b> <a class="float-right"><?php echo $row->sex; ?></a>
+                                                <b>Gender: </b> <a class="float-right"><?php echo $row->gender; ?></a>
                                             </li>
 
                                         </ul>
@@ -229,7 +230,7 @@ if (isset($_POST['change_staff_password'])) {
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Account Number</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="phone" value="<?php echo $row->staff_number; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="account_number" value="<?php echo $row->account_number; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -244,7 +245,7 @@ if (isset($_POST['change_staff_password'])) {
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Gender</label>
                                                         <div class="col-sm-10">
-                                                            <select class="form-control" name="sex">
+                                                            <select class="form-control" name="gender">
                                                                 <option>Male</option>
                                                                 <option>Female</option>
                                                             </select>
