@@ -9,7 +9,6 @@ if (isset($_POST['create_account'])) {
   $gender= $_POST['gender'];
   $acc_type=$_POST['acc_type'];
   $client_national_id = $_POST['client_national_id'];
-  $client_number = $_POST['client_number'];
   $phone = $_POST['phone'];
   $email = $_POST['email'];
   $address= $_POST['address'];
@@ -22,10 +21,10 @@ if (isset($_POST['create_account'])) {
   //move_uploaded_file($_FILES["profile_pic"]["tmp_name"],"dist/img/".$_FILES["profile_pic"]["name"]);
 
   //Insert Captured information to a database table
-  $query = "INSERT INTO iB_bankaccounts (name, gender,acc_type,client_national_id, client_number, phone, email,address,dob,pan_no,sign, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+  $query = "INSERT INTO iB_bankaccounts (name,gender,acc_type, dob, client_national_id, phone,address,email,pan_no,sign, password) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
   $stmt = $mysqli->prepare($query);
   //bind paramaters
-  $rc = $stmt->bind_param('ssssssssssss', $name,$gender,$acc_type,$client_national_id,$client_number,$phone,$email,$address,$dob,$pan_no,$sign,$password);
+  $rc = $stmt->bind_param('sssssssssss', $name,$gender,$acc_type,$dob,$client_national_id,$phone,$address,$email,$pan_no,$sign, $password);
   $stmt->execute();
 
   //declare a varible which will be passed to alert function
@@ -67,19 +66,40 @@ while ($auth = $res->fetch_object()) {
                 </div>
               </div>
             </div>
-            <div class="input-group mb-3">
-              <input type="text" requried name="gender" required class="form-control" placeholder="Gender">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
+            <div class="row">
+              <div class=" col-md-12 form-group">
+                <select class="form-control" onChange="getiBankAccs(this.value);" name="gender">
+                  <option>Select Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+            </div>
+            <!--Bank Account Details-->
+            <div class="row">
+              <div class=" col-md-12 form-group">
+                <select class="form-control" onChange="getiBankAccs(this.value);" name="acc_type">
+                  <option>Select Any Account types</option>
+                  <?php
+                  //fetch all iB_Acc_types
+                  $ret = "SELECT * FROM  iB_Acc_types ORDER BY RAND() ";
+                  $stmt = $mysqli->prepare($ret);
+                  $stmt->execute(); //ok
+                  $res = $stmt->get_result();
+                  $cnt = 1;
+                  while ($row = $res->fetch_object()) {
+
+                  ?>
+                    <option value="<?php echo $row->name; ?> "> <?php echo $row->name; ?> </option>
+                  <?php } ?>
+                </select>
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="text" name="acc_type" required class="form-control" placeholder="Account Type">
+              <input type="text" required name="dob" class="form-control" placeholder="DOB">
               <div class="input-group-append">
                 <div class="input-group-text">
-                  <span class="fas fa-user"></span>
+                  <span class="fas fa-tag"></span>
                 </div>
               </div>
             </div>
@@ -96,7 +116,7 @@ while ($auth = $res->fetch_object()) {
               //PHP function to generate random
               $length = 4;
               $_Number =  substr(str_shuffle('0123456789'), 1, $length); ?>
-              <input type="text" name="client_number" value="iBank-CLIENT-<?php echo $_Number; ?>" class="form-control" placeholder="User Number">
+              <input type="text" name="customer_id" value="iBank-CLIENT-<?php echo $_Number; ?>" class="form-control" placeholder="Customer ID">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -127,13 +147,6 @@ while ($auth = $res->fetch_object()) {
                 </div>
               </div>
               <div class="input-group mb-3">
-              <input type="text" name="dob" required class="form-control" placeholder="Data of Birth (dd/mm/yyyy)">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-marker"></span>
-                </div>
-              </div>
-              <div class="input-group mb-3">
               <input type="text" name="pan_no" required class="form-control" placeholder="Pan Card No">
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -146,9 +159,7 @@ while ($auth = $res->fetch_object()) {
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
                 </div>
-              </div>
-              
-              </div>
+             
             </div><!-- Log on to codeastro.com for more projects! -->
             <div class="input-group mb-3">
               <input type="password" name="password" required class="form-control" placeholder="Password">
