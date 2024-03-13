@@ -22,7 +22,7 @@ if (isset($_POST['create_account'])) {
   //move_uploaded_file($_FILES["profile_pic"]["tmp_name"],"dist/img/".$_FILES["profile_pic"]["name"]);
 
   //Insert Captured information to a database table
-  $query = "INSERT INTO iB_bankaccounts (name, gender,acc_type,client_national_id, client_number, phone, email,address,dob,pan_no,sign, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  $query = "INSERT INTO iB_bankaccounts (name, gender,acc_type,client_national_id, client_number, phone, email,address,dob,pan_no,sign, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
   $stmt = $mysqli->prepare($query);
   //bind paramaters
   $rc = $stmt->bind_param('ssssssssssss', $name,$gender,$acc_type,$client_national_id,$client_number,$phone,$email,$address,$dob,$pan_no,$sign,$password);
@@ -141,7 +141,7 @@ while ($auth = $res->fetch_object()) {
                 </div>
               </div>
               <div class="input-group mb-3">
-              <input type="text" name="signature" required class="form-control" placeholder="Signature">
+              <input type="text" name="sign" required class="form-control" placeholder="Signature">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
