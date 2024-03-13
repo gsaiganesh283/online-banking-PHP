@@ -4,10 +4,10 @@
     page with logged in user instance
     -->
   <?php
-  $staff_id = $_SESSION['staff_id'];
-  $ret = "SELECT * FROM  iB_staff  WHERE staff_id = ? ";
+  $staff_id = $_SESSION['account_id'];
+  $ret = "SELECT * FROM  iB_bankaccounts  WHERE account_id = ? ";
   $stmt = $mysqli->prepare($ret);
-  $stmt->bind_param('i', $staff_id);
+  $stmt->bind_param('i', $account_id);
   $stmt->execute(); //ok
   $res = $stmt->get_result();
   while ($row = $res->fetch_object()) {
@@ -150,20 +150,22 @@
                   Finances
                   <i class="fas fa-angle-left right"></i>
                 </p>
-              </a>
+    </a>
               <ul class="nav nav-treeview">
+                <!--
                 <li class="nav-item">
                   <a href="pages_deposits.php" class="nav-link">
                     <i class="fas fa-upload nav-icon"></i>
                     <p>Deposits</p>
                   </a>
-                </li>
+                
                 <li class="nav-item">
                   <a href="pages_withdrawals.php" class="nav-link">
                     <i class="fas fa-download nav-icon"></i>
                     <p>Withdrawals</p>
                   </a>
                 </li>
+                </li> -->
                 <li class="nav-item">
                   <a href="pages_transfers.php" class="nav-link">
                     <i class="fas fa-random nav-icon"></i>
