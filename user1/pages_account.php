@@ -13,7 +13,13 @@ if (isset($_POST['update_user_account'])) {
     $email = $_POST['email'];
     //$password = sha1(md5($_POST['password']));
     $gender  = $_POST['gender'];
-    $account_number= $_POST['account_number'];
+    $length=12;
+    $account_number =  substr(str_shuffle('0123456789'), 1, $length);
+    $client_national_id= $_SESSION['client_national_id'];
+    $pan_no= $_SESSION['pan_no'];
+    $address= $_POST['address'];
+    $dob=$_POST['dob'];
+
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
     move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
@@ -35,7 +41,7 @@ if (isset($_POST['update_user_account'])) {
 //change password
 if (isset($_POST['change_user_password'])) {
     $password = sha1(md5($_POST['password']));
-    $staff_id = $_SESSION['account_id'];
+    $account_id = $_SESSION['account_id'];
     //insert unto certain table in database
     $query = "UPDATE iB_bankaccounts  SET password=? WHERE  account_id=?";
     $stmt = $mysqli->prepare($query);
@@ -245,10 +251,29 @@ if (isset($_POST['change_user_password'])) {
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Gender</label>
                                                         <div class="col-sm-10">
-                                                            <select class="form-control" name="gender">
+                                                           <!-- <select class="form-control" name="gender">
                                                                 <option>Male</option>
                                                                 <option>Female</option>
-                                                            </select>
+                                                            </select> -->
+                                                            <input type="text" class="form-control" required readonly name="gender" value="<?php echo $row->gender; ?>" id="inputName3">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label">Aadhar Number</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" required readonly name="client_national_id" value="<?php echo $row->client_national_id; ?>" id="inputName2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label">Pan Card Number</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" required readonly name="pan_no" value="<?php echo $row->pan_no; ?>" id="inputName2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label">Address</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" required readonly name="address" value="<?php echo $row->address; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
