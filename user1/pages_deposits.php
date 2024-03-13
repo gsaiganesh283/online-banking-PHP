@@ -3,7 +3,7 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['staff_id'];
+$account_id = $_SESSION['account_id'];
 
 ?>
 
@@ -65,7 +65,7 @@ $staff_id = $_SESSION['staff_id'];
                   <tbody><!-- Log on to codeastro.com for more projects! -->
                     <?php
                     //fetch all iB_Accs
-                    $ret = "SELECT * FROM  iB_bankAccounts ";
+                    $ret = "SELECT * FROM  iB_bankAccounts";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
