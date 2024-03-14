@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center; /* Center align the heading */
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>KYC Form</h2>
+    <form action="process_kyc.php" method="post" enctype="multipart/form-data">
+        <label for="identity_proof">Identity Proof:</label>
+        <input type="file" name="identity_proof" id="identity_proof" required><br><br>
+
+        <label for="address_proof">Address Proof:</label>
+        <input type="file" name="address_proof" id="address_proof" required><br><br>
+
+        <label for="photograph">Photograph:</label>
+        <input type="file" name="photograph" id="photograph" required><br><br>
+
+        <label for="full_name">Full Name:</label>
+        <input type="text" name="full_name" id="full_name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" id="dob" required><br><br>
+
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" required></textarea><br><br>
+
+        <label for="income_proof">Income Proof:</label>
+        <input type="file" name="income_proof" id="income_proof" required><br><br>
+
+        <label for="source_of_funds">Source of Funds:</label>
+        <input type="text" name="source_of_funds" id="source_of_funds" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
