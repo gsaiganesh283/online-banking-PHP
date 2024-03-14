@@ -74,6 +74,17 @@
             </li>
             <!-- ./Account-->
 
+            <!--KYC -->
+            <li class="nav-item">
+              <a href="doc1.html" class="nav-link">
+                <i class="nav-icon fas fa-user-tie"></i>
+                <p>
+                  KYC
+                </p>
+              </a>
+            </li>
+            <!-- ./KYC-->
+
            
 
             <!--Clients
