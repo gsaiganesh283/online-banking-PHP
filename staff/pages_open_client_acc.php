@@ -7,7 +7,7 @@ $astaff_id = $_SESSION['staff_id'];
 //register new account
 if (isset($_POST['open_account'])) {
     //Client open account
-    $acc_name = $_POST['acc_name'];
+    $name = $_POST['name'];
     $account_number = $_POST['account_number'];
     $acc_type = $_POST['acc_type'];
     $acc_rates = $_POST['acc_rates'];
@@ -16,16 +16,16 @@ if (isset($_POST['open_account'])) {
     $client_id  = $_GET['client_id'];
     $client_national_id = $_POST['client_national_id'];
     $client_name = $_POST['client_name'];
-    $client_phone = $_POST['client_phone'];
+    $phone = $_POST['phone'];
     $client_number = $_POST['client_number'];
-    $client_email  = $_POST['client_email'];
-    $client_adr  = $_POST['client_adr'];
+    $email  = $_POST['email'];
+    $address  = $_POST['address'];
 
     //Insert Captured information to a database table
-    $query = "INSERT INTO iB_bankAccounts (acc_name, account_number, acc_type, acc_rates, acc_status, acc_amount, client_id, client_name, client_national_id, client_phone, client_number, client_email, client_adr) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, acc_amount, client_id, client_name, client_national_id, phone, client_number, email, address) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssssssssss', $acc_name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr);
+    $rc = $stmt->bind_param('sssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount, $client_id, $client_name, $client_national_id, $phone, $client_number, $email, $address);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -111,7 +111,7 @@ if (isset($_POST['open_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Phone Number</label>
-                                                    <input type="text" readonly name="client_phone" value="<?php echo $row->phone; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly name="phone" value="<?php echo $row->phone; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputPassword1">Client National ID No.</label>
@@ -122,11 +122,11 @@ if (isset($_POST['open_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Email</label>
-                                                    <input type="email" readonly name="client_email" value="<?php echo $row->email; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="email" readonly name="email" value="<?php echo $row->email; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Address</label>
-                                                    <input type="text" name="client_adr" readonly value="<?php echo $row->address; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" name="address" readonly value="<?php echo $row->address; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
                                             <!-- ./End Personal Details -->
@@ -171,7 +171,7 @@ if (isset($_POST['open_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Account Name</label>
-                                                    <input type="text" name="acc_name" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" name="name" required class="form-control" id="exampleInputEmail1">
                                                 </div>
 
                                                 <div class=" col-md-6 form-group">
