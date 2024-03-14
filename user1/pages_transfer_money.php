@@ -200,7 +200,7 @@ if (isset($_POST['deposit'])) {
                                                         while ($row = $res->fetch_object()) {
 
                                                         ?>
-                                                            <option><?php echo $row->account_number; ?></option>
+                                                            <option><?php echo $row->account_number; ?><?php echo "  "; ?><?php echo $row->name; ?></option>
 
                                                         <?php } ?>
 
