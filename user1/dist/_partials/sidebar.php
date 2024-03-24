@@ -76,7 +76,7 @@
 
             <!--KYC -->
             <li class="nav-item">
-              <a href="doc1.html" class="nav-link">
+              <a href="pages_user_kyc.php" class="nav-link">
                 <i class="nav-icon fas fa-user-tie"></i>
                 <p>
                   KYC
