@@ -70,7 +70,8 @@ if (isset($_GET['RollBack_Transaction'])) {
                     <tr>
                       <th>#</th>
                       <th>Transaction Code</th>
-                      <th>Account No.</th>
+                      <th>Sender Account No.</th>
+                      <th>Sender Name</th>
                       <th>Type</th>
                       <th>Amount</th>
                       <th>Acc. Owner</th>
@@ -106,6 +107,7 @@ if (isset($_GET['RollBack_Transaction'])) {
                         <td><?php echo $cnt; ?></td>
                         <td><?php echo $row->tr_code; ?></a></td>
                         <td><?php echo $row->account_number; ?></td>
+                        <td><?php echo $row->name; ?></td>
                         <td><?php echo $alertClass; ?></td>
                         <td>$ <?php echo $row->transaction_amt; ?></td>
                         <td><?php echo $row->client_name; ?></td>
