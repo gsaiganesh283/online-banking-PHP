@@ -9,7 +9,7 @@ $admin_id = $_SESSION['admin_id'];
 if (isset($_POST['deposit'])) {
     $tr_code = $_POST['tr_code'];
     $account_id = $_GET['account_id'];
-    $acc_name = $_POST['acc_name'];
+    $name = $_POST['name'];
     $account_number = $_GET['account_number'];
     $acc_type = $_POST['acc_type'];
     //$acc_amount  = $_POST['acc_amount'];
@@ -51,14 +51,14 @@ if (isset($_POST['deposit'])) {
 
 
         //Insert Captured information to a database table
-        $query = "INSERT INTO iB_Transactions (tr_code, account_id, acc_name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, client_phone, receiving_acc_no, receiving_acc_name, receiving_acc_holder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, receiving_acc_no, receiving_acc_name, receiving_acc_holder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $notification = "INSERT INTO  iB_notifications (notification_details) VALUES (?)";
 
         $stmt = $mysqli->prepare($query);
         $notification_stmt = $mysqli->prepare($notification);
 
         //bind paramaters
-        $rc = $stmt->bind_param('sssssssssssssss', $tr_code, $account_id, $acc_name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $client_phone, $receiving_acc_no, $receiving_acc_name, $receiving_acc_holder);
+        $rc = $stmt->bind_param('ssssssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $receiving_acc_no, $receiving_acc_name, $receiving_acc_holder);
         $rc = $notification_stmt->bind_param('s', $notification_details);
 
         $stmt->execute();
@@ -124,7 +124,7 @@ if (isset($_POST['deposit'])) {
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="pages_transfer_money.php">Finances</a></li>
                                     <li class="breadcrumb-item"><a href="pages_transfer_money.php">Transfer</a></li>
-                                    <li class="breadcrumb-item active"><?php echo $row->acc_name; ?></li>
+                                    <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -164,7 +164,7 @@ if (isset($_POST['deposit'])) {
                                             <div class="row">
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputEmail1">Account Name</label>
-                                                    <input type="text" readonly name="acc_name" value="<?php echo $row->acc_name; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly name="name" value="<?php echo $row->name; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Account Number</label>
