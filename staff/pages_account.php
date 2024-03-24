@@ -15,7 +15,7 @@ if (isset($_POST['update_staff_account'])) {
     $sex  = $_POST['sex'];
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
-    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
+    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../staff/dist/img/" . $_FILES["profile_pic"]["name"]);
 
     //Insert Captured information to a database table
     $query = "UPDATE iB_staff SET name=?, phone=?, email=?, sex=?, profile_pic=? WHERE staff_id=?";
