@@ -27,7 +27,7 @@ if (isset($_POST['deposit'])) {
 
 
     //Insert Captured information to a database table
-    $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, client_phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     $notification = "INSERT INTO  iB_notifications (notification_details) VALUES (?)";
 
     $stmt = $mysqli->prepare($query);
@@ -35,7 +35,7 @@ if (isset($_POST['deposit'])) {
 
     //bind paramaters
     $rc = $notification_stmt->bind_param('s', $notification_details);
-    $rc = $stmt->bind_param('ssssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $client_phone);
+    $rc = $stmt->bind_param('sssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt);
     $stmt->execute();
     $notification_stmt->execute();
 
