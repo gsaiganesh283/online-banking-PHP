@@ -92,6 +92,7 @@ if (isset($_POST['deposit'])) {
         <?php include("dist/_partials/sidebar.php"); ?>
 
         <!-- Content Wrapper. Contains page content -->
+        <!-- Content Wrapper. Contains page content -->
         <?php
         $account_id = $_GET['account_id'];
         $ret = "SELECT * FROM  iB_bankAccounts WHERE account_id = ? ";
@@ -101,6 +102,14 @@ if (isset($_POST['deposit'])) {
         $res = $stmt->get_result();
         $cnt = 1;
         while ($row = $res->fetch_object()) {
+            //Indicate Account Balance 
+            $result = "SELECT SUM(transaction_amt) FROM  iB_Transactions  WHERE account_id=?";
+            $stmt = $mysqli->prepare($result);
+            $stmt->bind_param('i', $account_id);
+            $stmt->execute();
+            $stmt->bind_result($amt);
+            $stmt->fetch();
+            $stmt->close();
 
         ?>
             <div class="content-wrapper">
@@ -123,6 +132,7 @@ if (isset($_POST['deposit'])) {
                     </div><!-- /.container-fluid -->
                 </section>
 
+                <!-- Main content -->
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
@@ -169,7 +179,7 @@ if (isset($_POST['deposit'])) {
                                             </div>
 
                                             <div class="row">
-                                                <div class=" col-md-6 form-group">
+                                                <div class=" col-md-4 form-group">
                                                     <label for="exampleInputEmail1">Transaction Code</label>
                                                     <?php
                                                     //PHP function to generate random account number
@@ -178,8 +188,11 @@ if (isset($_POST['deposit'])) {
                                                     ?>
                                                     <input type="text" name="tr_code" readonly value="<?php echo $_transcode; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
-
-                                                <div class=" col-md-6 form-group">
+                                                <div class=" col-md-4 form-group">
+                                                    <label for="exampleInputPassword1">Current Account Balance</label>
+                                                    <input type="text" readonly value="<?php echo $amt; ?>" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                                <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Amount Transfered($)</label>
                                                     <input type="text" name="transaction_amt" required class="form-control" id="exampleInputEmail1">
                                                 </div>
@@ -189,6 +202,7 @@ if (isset($_POST['deposit'])) {
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Receiving Account Number</label>
                                                     <select name="receiving_acc_no" onChange="getiBankAccs(this.value);" required class="form-control">
+                                                    <!-- <input type="text" name="receiving_acc_no" required class="form-control" placeholder="Receiving Account Number"> -->
                                                         <option>Select Receiving Account</option>
                                                         <?php
                                                         //fetch all iB_Accs
@@ -208,10 +222,10 @@ if (isset($_POST['deposit'])) {
                                                 </div>
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Receiving Account Name</label>
-                                                    <input type="text" name="receiving_name" required class="form-control" id="ReceivingAcc">
+                                                    <input type="text" name="receiving_acc_name" required class="form-control" id="ReceivingAcc">
                                                 </div>
                                                 <div class=" col-md-4 form-group">
-                                                    <label for="exampleInputPassword1">Receiving Account Holder Branch</label>
+                                                    <label for="exampleInputPassword1">Receiving Account Holder</label>
                                                     <input type="text" name="receiving_acc_holder" required class="form-control" id="AccountHolder">
                                                 </div>
 
