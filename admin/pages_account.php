@@ -10,9 +10,9 @@ if (isset($_POST['update_account'])) {
     $admin_id = $_SESSION['admin_id'];
     $email = $_POST['email'];
 
-    $profile_pic  = $_FILES["profile_pic"]["name"];
-    // move_uploaded_file($_FILES["profile_pic"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
-    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
+    // $profile_pic  = $_FILES["profile_pic"]["name"];
+    // // move_uploaded_file($_FILES["profile_pic"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
+    // move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
     //insert unto certain table in database
     $query = "UPDATE iB_admin  SET name=?, email=? ,profile_pic=? WHERE  admin_id=?";
     $stmt = $mysqli->prepare($query);
