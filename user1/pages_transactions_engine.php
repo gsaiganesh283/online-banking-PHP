@@ -75,7 +75,7 @@ if (isset($_GET['RollBack_Transaction'])) {
                       <th>Amount</th>
                       <th>Acc. Owner</th>
                       <th>Timestamp</th>
-                      <th>Action</th>
+                      <!-- <th>Action</th> -->
 
                     </tr>
                   </thead>
@@ -110,13 +110,13 @@ if (isset($_GET['RollBack_Transaction'])) {
                         <td>$ <?php echo $row->transaction_amt; ?></td>
                         <td><?php echo $row->client_name; ?></td>
                         <td><?php echo date("d-M-Y h:m:s ", strtotime($transTstamp)); ?></td>
-                        <td>
+                        <!-- <td>
                           <a class="btn btn-danger btn-sm" href="pages_transactions_engine.php?RollBack_Transaction=<?php echo $row->tr_id; ?>">
                             <i class="fas fa-power-off"></i>
                             Roll Back Transaction
                           </a>
 
-                        </td>
+                        </td> -->
                       </tr>
                     <?php $cnt = $cnt + 1;
                     } ?>
