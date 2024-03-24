@@ -51,14 +51,14 @@ if (isset($_POST['deposit'])) {
 
 
         //Insert Captured information to a database table
-        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, client_phone, receiving_acc_no, receiving_name, receiving_acc_holder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, receiving_acc_no, receiving_acc_name, receiving_acc_holder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $notification = "INSERT INTO  iB_notifications (notification_details) VALUES (?)";
 
         $stmt = $mysqli->prepare($query);
         $notification_stmt = $mysqli->prepare($notification);
 
         //bind paramaters
-        $rc = $stmt->bind_param('sssssssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $client_phone, $receiving_acc_no, $receiving_name, $receiving_acc_holder);
+        $rc = $stmt->bind_param('ssssssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $receiving_acc_no, $receiving_acc_name, $receiving_acc_holder);
         $rc = $notification_stmt->bind_param('s', $notification_details);
 
         $stmt->execute();
@@ -208,10 +208,10 @@ if (isset($_POST['deposit'])) {
                                                 </div>
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Receiving Account Name</label>
-                                                    <input type="text" name="receiving_name" required class="form-control" id="ReceivingAcc">
+                                                    <input type="text" name="receiving_acc_name" required class="form-control" id="ReceivingAcc">
                                                 </div>
                                                 <div class=" col-md-4 form-group">
-                                                    <label for="exampleInputPassword1">Receiving Account Holder</label>
+                                                    <label for="exampleInputPassword1">Receiving Account Holder Branch</label>
                                                     <input type="text" name="receiving_acc_holder" required class="form-control" id="AccountHolder">
                                                 </div>
 
