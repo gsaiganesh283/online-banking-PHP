@@ -278,7 +278,7 @@ if (isset($_POST['change_user_password'])) {
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="offset-sm-2 col-sm-10">
-                                                            <button name="update_staff_account" type="submit" class="btn btn-outline-success">Update Account</button>
+                                                            <button name="update_user_account" type="submit" class="btn btn-outline-success">Update Account</button>
                                                         </div>
                                                     </div>
                                                 </form>
