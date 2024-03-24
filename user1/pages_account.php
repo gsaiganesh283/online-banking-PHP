@@ -22,7 +22,7 @@ if (isset($_POST['update_user_account'])) {
 
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
-    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
+    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../user1/dist/img/" . $_FILES["profile_pic"]["name"]);
 
     //Insert Captured information to a database table
     $query = "UPDATE iB_bankaccounts SET name=?, phone=?, email=?, gender=?, profile_pic=? WHERE account_id=?";
