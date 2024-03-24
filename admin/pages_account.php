@@ -9,11 +9,14 @@ if (isset($_POST['update_account'])) {
     $name = $_POST['name'];
     $admin_id = $_SESSION['admin_id'];
     $email = $_POST['email'];
+
+    $profile_pic  = $_FILES["profile_pic"]["name"];
+    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
     //insert unto certain table in database
-    $query = "UPDATE iB_admin  SET name=?, email=? WHERE  admin_id=?";
+    $query = "UPDATE iB_admin  SET name=?, email=? ,profile_pic=? WHERE  admin_id=?";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('ssi', $name, $email, $admin_id);
+    $rc = $stmt->bind_param('sssi', $name, $email,$profile_pic, $admin_id);
     $stmt->execute();
     //declare a varible which will be passed to alert function
     if ($stmt) {
@@ -73,8 +76,8 @@ if (isset($_POST['change_password'])) {
                     $profile_picture = "
 
                         <img class='img-fluid'
-                        src='dist/img/user_icon.png'
-                        alt='User profile picture'>
+                        src='dist/img/my_photo.jpg'
+                        alt='Admin profile picture'>
 
                         ";
                 } else {
@@ -82,7 +85,7 @@ if (isset($_POST['change_password'])) {
 
                         <img class=' img-fluid'
                         src='dist/img/$row->profile_pic'
-                        alt='User profile picture'>
+                        alt='Admin profile picture'>
 
                         ";
                 }
@@ -173,6 +176,15 @@ if (isset($_POST['change_password'])) {
                                                             <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->number; ?>" id="inputName2">
                                                         </div>
                                                     </div><!-- Log on to codeastro.com for more projects! -->
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label">Profile Picture</label>
+                                                        <div class="input-group col-sm-10">
+                                                            <div class="custom-file">
+                                                                <input type="file" name="profile_pic" class=" form-control custom-file-input" id="exampleInputFile">
+                                                                <label class="custom-file-label  col-form-label" for="exampleInputFile">Choose file</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group row">
                                                         <div class="offset-sm-2 col-sm-10">
                                                             <button name="update_account" type="submit" class="btn btn-outline-success">Update Account</button>
