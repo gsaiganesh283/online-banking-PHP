@@ -71,7 +71,7 @@ while ($auth = $res->fetch_object()) {
               </div>
               <!-- /.col -->
               <div class="col-8">
-                <button type="submit" name="login" class="btn btn-danger btn-block">Log In as Admin</button>
+                <button type="submit" name="login" class="btn btn-danger btn-block">Log In as User</button>
               </div>
               <!-- /.col -->
             </div>
