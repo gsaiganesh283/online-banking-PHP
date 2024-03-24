@@ -89,7 +89,7 @@ if (isset($_POST['change_user_password'])) {
                     $profile_picture = "
 
                         <img class='img-fluid'
-                        src='../admin/dist/img/user_icon.png'
+                        src='../user1/dist/img/user_icon.png'
                         alt='User profile picture'>
 
                         ";
@@ -97,7 +97,7 @@ if (isset($_POST['change_user_password'])) {
                     $profile_picture = "
 
                         <img class=' img-fluid'
-                        src='../admin/dist/img/$row->profile_pic'
+                        src='../user1/dist/img/$row->profile_pic'
                         alt='User profile picture'>
 
                         ";
