@@ -74,7 +74,9 @@ if (isset($_GET['RollBack_Transaction'])) {
                       <th>Sender Name</th>
                       <th>Type</th>
                       <th>Amount</th>
-                      <th>Acc. Owner</th>
+                      <th>Branch Name</th>
+                      <th>Receiver Account No.</th>
+                      <th>Receiver Name</th>
                       <th>Timestamp</th>
                       <th>Action</th>
 
@@ -111,6 +113,8 @@ if (isset($_GET['RollBack_Transaction'])) {
                         <td><?php echo $alertClass; ?></td>
                         <td>$ <?php echo $row->transaction_amt; ?></td>
                         <td><?php echo $row->client_name; ?></td>
+                        <td><?php echo $row->receiving_acc_no; ?></td>
+                        <td><?php echo $row->receiving_acc_name; ?></td>
                         <td><?php echo date("d-M-Y h:m:s ", strtotime($transTstamp)); ?></td>
                         <td>
                           <a class="badge badge-danger" href="pages_transactions_engine.php?RollBack_Transaction=<?php echo $row->tr_id; ?>">
