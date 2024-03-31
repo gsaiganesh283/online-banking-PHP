@@ -1,6 +1,6 @@
 <?php
     $dbuser="root";
     $dbpass="";
-    $host="localhost";
+    $host="localhost:3307";
     $db="internetbanking";
     $mysqli=new mysqli($host,$dbuser, $dbpass, $db);
