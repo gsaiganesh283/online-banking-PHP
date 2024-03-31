@@ -15,10 +15,10 @@ if (isset($_POST['update_user_account'])) {
     $gender  = $_POST['gender'];
     $length=12;
     $account_number =  substr(str_shuffle('0123456789'), 1, $length);
-    $client_national_id= $_SESSION['client_national_id'];
-    $pan_no= $_SESSION['pan_no'];
+    $client_national_id= $_POST['client_national_id'];
+    $pan_no= $_POST['pan_no'];
     $address= $_POST['address'];
-    $dob=$_POST['dob'];
+    // $dob=$_POST['dob'];
 
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
@@ -138,7 +138,7 @@ if (isset($_POST['change_user_password'])) {
 
                                         <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
 
-                                        <p class="text-muted text-center">user @SRMISTBanking </p>
+                                        <p class="text-muted text-center">User@SRMISTBanking </p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
@@ -246,6 +246,16 @@ if (isset($_POST['change_user_password'])) {
                                                                 <input type="file" name="profile_pic" class=" form-control custom-file-input" id="exampleInputFile">
                                                                 <label class="custom-file-label  col-form-label" for="exampleInputFile">Choose file</label>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputName2" class="col-sm-2 col-form-label"> Date Of Birth </label>
+                                                        <div class="col-sm-10">
+                                                           <!-- <select class="form-control" name="gender">
+                                                                <option>Male</option>
+                                                                <option>Female</option>
+                                                            </select> -->
+                                                            <input type="text" class="form-control" required readonly name="Date Of Birth" value="<?php echo $row->dob; ?>" id="inputName3">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
