@@ -15,8 +15,8 @@ if (isset($_POST['update_user_account'])) {
     $gender  = $_POST['gender'];
     $length=12;
     $account_number =  substr(str_shuffle('0123456789'), 1, $length);
-    $client_national_id= $_SESSION['client_national_id'];
-    $pan_no= $_SESSION['pan_no'];
+    $client_national_id= $_POST['client_national_id'];
+    $pan_no= $_POST['pan_no'];
     $address= $_POST['address'];
     $dob=$_POST['dob'];
 
@@ -25,10 +25,10 @@ if (isset($_POST['update_user_account'])) {
     move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
 
     //Insert Captured information to a database table
-    $query = "UPDATE iB_bankaccounts SET name=?, phone=?, email=?, gender=?, profile_pic=? WHERE account_id=?";
+    $query = "UPDATE iB_bankaccounts SET name=?, phone=?, email=?, gender=?, profile_pic=?, dob=? WHERE account_id=?";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssi', $name, $phone, $email, $gender, $profile_pic, $account_id);
+    $rc = $stmt->bind_param('ssssssi', $name, $phone, $email, $gender, $profile_pic,$dob, $account_id);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -255,14 +255,14 @@ if (isset($_POST['change_user_password'])) {
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Date Of Birth </label>
                                                         <div class="col-sm-10">
-                                                            <input type="date" class="form-control" required  name="pan_no" value="<?php echo $row->pan_no; ?>" id="inputName2">
+                                                            <input type="date" class="form-control" required  name="dob" value="<?php echo $row->dob; ?>" id="inputName2">
                                                         
-                                                        <div class="input-group row-sm-10">
+                                                        <!-- <div class="input-group row-sm-10">
                                                             <div class="custom-file">
                                                                 <input type="file" name="profile_pic" class=" form-control custom-file-input" id="exampleInputFile">
                                                                 <label class="custom-file-label  col-form-label" for="exampleInputFile">Choose file</label>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         </div>
                                                     </div>
 
