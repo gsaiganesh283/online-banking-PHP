@@ -257,12 +257,12 @@ if (isset($_POST['change_user_password'])) {
                                                         <div class="col-sm-10">
                                                             <input type="date" class="form-control" required  name="dob" value="<?php echo $row->dob; ?>" id="inputName2">
                                                         
-                                                        <div class="input-group row-sm-10">
+                                                        <!-- <div class="input-group row-sm-10">
                                                             <div class="custom-file">
                                                                 <input type="file" name="profile_pic" class=" form-control custom-file-input" id="exampleInputFile">
                                                                 <label class="custom-file-label  col-form-label" for="exampleInputFile">Choose file</label>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         </div>
                                                     </div>
 
