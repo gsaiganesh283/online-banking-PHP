@@ -47,7 +47,7 @@ $admin_id = $_SESSION['admin_id'];
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Select on any account to deposit money</h3>
+                <h3 class="card-title">Search for any account to deposit money</h3>
               </div>
               <div class="card-body">
                 <table id="example1" class="table table-hover table-bordered table-striped">
@@ -145,5 +145,4 @@ $admin_id = $_SESSION['admin_id'];
     });
   </script>
 </body>
-
 </html>
