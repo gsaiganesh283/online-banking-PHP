@@ -53,7 +53,7 @@ $admin_id = $_SESSION['admin_id'];
                 <table id="example1" class="table table-hover table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>S.NO</th>
                       <th>Name</th>
                       <th>Account No.</th>
                       <th>Rate</th>
