@@ -55,7 +55,7 @@ if (isset($_POST['create_staff_account'])) {
                 <div class="container-fluid">
                     <div class="row mb-2"><!-- Log on to codeastro.com for more projects! -->
                         <div class="col-sm-6">
-                            <h1>Create Client Account</h1>
+                            <h1>Create Branch Account</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -84,7 +84,7 @@ if (isset($_POST['create_staff_account'])) {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class=" col-md-6 form-group">
-                                                <label for="exampleInputEmail1">Client Name</label>
+                                                <label for="exampleInputEmail1">Branch Name</label>
                                                 <input type="text" name="name" required class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class=" col-md-6 form-group">
