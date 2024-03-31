@@ -88,7 +88,7 @@ if (isset($_POST['create_staff_account'])) {
                                                 <input type="text" name="name" required class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class=" col-md-6 form-group">
-                                                <label for="exampleInputPassword1">Client Number</label>
+                                                <label for="exampleInputPassword1">Branch Number</label>
                                                 <?php
                                                 //PHP function to generate random passenger number
                                                 $length = 4;
@@ -126,7 +126,7 @@ if (isset($_POST['create_staff_account'])) {
                                             </div>
 
                                             <div class="col-md-6 form-group">
-                                                <label for="exampleInputFile">Client Profile Picture</label>
+                                                <label for="exampleInputFile">Branch Profile Picture</label>
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" name="profile_pic" class="custom-file-input" id="exampleInputFile">
