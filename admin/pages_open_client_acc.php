@@ -7,7 +7,7 @@ $admin_id = $_SESSION['admin_id'];
 //register new account
 if (isset($_POST['open_account'])) {
     //Client open account
-    $acc_name = $_POST['acc_name'];
+    $name = $_POST['name'];
     $account_number = $_POST['account_number'];
     $acc_type = $_POST['acc_type'];
     $acc_rates = $_POST['acc_rates'];
@@ -22,10 +22,10 @@ if (isset($_POST['open_account'])) {
     $client_adr  = $_POST['client_adr'];
 
     //Insert Captured information to a database table
-    $query = "INSERT INTO iB_bankAccounts (acc_name, account_number, acc_type, acc_rates, acc_status, acc_amount, client_id, client_name, client_national_id, client_phone, client_number, client_email, client_adr) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, acc_amount, client_id, client_name, client_national_id, client_phone, client_number, client_email, client_adr) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssssssssss', $acc_name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr);
+    $rc = $stmt->bind_param('sssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -171,7 +171,7 @@ if (isset($_POST['open_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Account Name</label>
-                                                    <input type="text" name="acc_name" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" name="name" required class="form-control" id="exampleInputEmail1">
                                                 </div>
 
                                                 <div class=" col-md-6 form-group">
