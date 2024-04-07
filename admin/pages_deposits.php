@@ -58,7 +58,7 @@ $admin_id = $_SESSION['admin_id'];
                       <th>Account No.</th>
                       <th>Rate</th>
                       <th>Acc. Type</th>
-                      <th>Acc. Owner</th>
+                      <th>Branch</th>
                       <th>Action</th>
                     </tr>
                   </thead><!-- Log on to codeastro.com for more projects! -->
