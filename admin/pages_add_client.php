@@ -60,7 +60,7 @@ if (isset($_POST['create_staff_account'])) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="pages_add_client.php">iBanking Clients</a></li>
+                                <li class="breadcrumb-item"><a href="pages_add_client.php">iBanking Branch</a></li>
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -142,7 +142,7 @@ if (isset($_POST['create_staff_account'])) {
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" name="create_staff_account" class="btn btn-success">Add Client</button>
+                                        <button type="submit" name="create_staff_account" class="btn btn-success">Add Branch</button>
                                     </div>
                                 </form>
                             </div>
