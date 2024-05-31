@@ -20,12 +20,25 @@ if (isset($_POST['open_account'])) {
     $client_number = $_POST['client_number'];
     $client_email  = $_POST['client_email'];
     $client_adr  = $_POST['client_adr'];
+    $email=$_POST['email'];
+    $contact=$_POST['contact'];
+    $dob=$_POST['dob'];
+    $gender=$_POST['gender'];
+    $aadhar=$_POST['aadhar'];
+    $pan_no=$_POST['pan_no'];
+    $address=$_POST['address'];
+    $signature=$_POST['signature'];
 
     //Insert Captured information to a database table
-    $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, acc_amount, client_id, client_name, client_national_id, client_phone, client_number, client_email, client_adr) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, 
+    acc_amount, client_id, client_name, client_national_id, 
+    client_phone, client_number, client_email, client_adr,
+    email,contact,dob,gender,aadhar,pan_no,address,signature) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr);
+    $rc = $stmt->bind_param('sssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
+    $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, 
+    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -99,33 +112,33 @@ if (isset($_POST['open_account'])) {
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Client Name</label>
+                                                    <label for="exampleInputEmail1">Branch Name</label>
                                                     <input type="text" readonly name="client_name" value="<?php echo $row->name; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputPassword1">Client Number</label>
+                                                    <label for="exampleInputPassword1">Branch Number</label>
                                                     <input type="text" readonly name="client_number" value="<?php echo $row->client_number; ?>" class="form-control" id="exampleInputPassword1">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Client Phone Number</label>
+                                                    <label for="exampleInputEmail1">Branch Phone Number</label>
                                                     <input type="text" readonly name="client_phone" value="<?php echo $row->phone; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputPassword1">Client National ID No.</label>
+                                                    <label for="exampleInputPassword1">Branch National ID No.</label>
                                                     <input type="text" readonly value="<?php echo $row->national_id; ?>" name="client_national_id" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Client Email</label>
+                                                    <label for="exampleInputEmail1">Branch Email</label>
                                                     <input type="email" readonly name="client_email" value="<?php echo $row->email; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Client Address</label>
+                                                    <label for="exampleInputEmail1">Branch Address</label>
                                                     <input type="text" name="client_adr" readonly value="<?php echo $row->address; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
@@ -181,7 +194,52 @@ if (isset($_POST['open_account'])) {
                                                     $length = 12;
                                                     $_accnumber =  substr(str_shuffle('0123456789'), 1, $length);
                                                     ?>
-                                                    <input type="text" name="account_number" value="<?php echo $_accnumber; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly name="account_number" value="<?php echo $_accnumber; ?>" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                            <div class = "row">
+                                                 <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Email</label>
+                                                    <input type="text" name="email" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                                <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Contact</label>
+                                                    <input type="text" name="contact" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                            <div class = "row">
+                                                 <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Date of Birth</label>
+                                                    <input type="text" name="dob" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                                <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Gender</label>
+                                                    <select class="form-control" name="gender">
+                                                        <option>Select Gender</option>
+                                                        <option>Female</option>
+                                                        <option>Male</option>
+                                                    </select>
+                                                    <!-- <input type="text" name="gender" required class="form-control" id="exampleInputEmail1"> -->
+                                                </div>
+                                            </div>
+                                            <div class = "row">
+                                                 <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Aadhar</label>
+                                                    <input type="text" name="aadhar" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                                <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Pan Number</label>
+                                                    <input type="text" name="pan_no" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                            </div>
+                                            <div class = "row">
+                                                 <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Address</label>
+                                                    <input type="text" name="address" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+                                                <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Signature</label>
+                                                    <input type="text" name="signature" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
                                         </div>
