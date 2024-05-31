@@ -18,7 +18,7 @@ if (isset($_POST['update_user_account'])) {
     $client_national_id= $_POST['client_national_id'];
     $pan_no= $_POST['pan_no'];
     $address= $_POST['address'];
-    // $dob=$_POST['dob'];
+    $dob=$_POST['dob'];
 
 
     $profile_pic  = $_FILES["profile_pic"]["name"];
