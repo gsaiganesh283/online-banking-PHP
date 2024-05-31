@@ -13,10 +13,10 @@
   while ($row = $res->fetch_object()) {
     //set automatically logged in user default image if they have not updated their pics
     if ($row->profile_pic == '') {
-      $profile_picture = "<img src='../admin/dist/img/user_icon.png' class=' elevation-2' alt='User Image'>
+      $profile_picture = "<img src='dist/img/user_icon.png' class='img-circle elevation-2' alt='User Image'>
                 ";
     } else {
-      $profile_picture = "<img src='../admin/dist/img/$row->profile_pic' class='elevation-2' alt='User Image'>
+      $profile_picture = "<img src='dist/img/$row->profile_pic' class='img-circle elevation-2' alt='User Image'>
                 ";
     }
 
