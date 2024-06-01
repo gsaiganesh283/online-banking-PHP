@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 01, 2024 at 12:54 PM
+-- Generation Time: Jun 01, 2024 at 03:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -269,25 +269,6 @@ CREATE TABLE `ib_transactions` (
   `receiving_acc_name` varchar(200) NOT NULL,
   `receiving_acc_holder` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `ib_transactions`
---
-
-INSERT INTO `ib_transactions` (`tr_id`, `tr_code`, `account_id`, `name`, `account_number`, `acc_type`, `acc_amount`, `tr_type`, `tr_status`, `client_id`, `client_name`, `client_national_id`, `transaction_amt`, `phone`, `receiving_acc_no`, `created_at`, `receiving_acc_name`, `receiving_acc_holder`) VALUES
-(58, 'igOQErS0wYZLkq6lxCn4', '22', 'Durga Bhavani Y', '632958071', 'Savings ', '', 'Deposit', 'Success ', '10', 'Saiganesh Raju Gottam', '696868018088', '250000', '6281718680', '', '2024-03-13 06:56:48.882180', '', ''),
-(63, 'E6WvORbXTiIMueN5Pqw4', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Transfer', 'Success ', '10', 'SRMIST', '696868018088', '1', '6281718680', '398465721', '2024-03-13 20:14:57.997720', 'Saiganesh Raju', 'SRMIST'),
-(66, 'OvU4SPnD0j18tGIai5rY', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Transfer', 'Success ', '10', 'SRMIST', '696868018088', '1200', '6281718680', '037928541 Likhitha Priya D', '2024-03-14 03:39:35.867478', 'Likhitha Priya D', 'SRMIST'),
-(67, 'wvVEnQIClXB8pG3ob0Ay', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Transfer', 'Success ', '10', 'SRMIST', '696868018088', '50000', '6281718680', '032971564 Sukumar', '2024-03-14 03:46:44.302783', 'Sukumar', 'SRMIST'),
-(68, '04WQ1N5A9DiBIv8pE2lL', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Deposit', 'Success ', '10', 'SRMIST', '696868018088', '20000', '', '', '2024-03-24 16:47:39.762926', '', ''),
-(69, 'MLNj38rZ5tFWHfkuabdC', '26', 'Saiganesh Raju', '123456789', 'Savings', '', 'Deposit', 'Success ', '', '', '696868018088', '20000', '', '', '2024-03-24 16:47:55.166584', '', ''),
-(70, 'u2egplnRU1o95OzjQVY3', '26', 'Saiganesh Raju', '123456789', 'Savings', '', 'Deposit', 'Success ', '', '', '696868018088', '20000', '', '', '2024-03-24 16:49:22.922180', '', ''),
-(72, 'SzVWbrLTIpltofBCQAgR', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Transfer', 'Success ', '10', 'SRMIST', '696868018088', '20000', '', '632958071', '2024-03-24 19:18:39.701473', 'Durga Bhavani Y', 'SRMIST'),
-(73, 'ZAfca9Xtev2YhOkK0igB', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Deposit', 'Success ', '10', 'SRMIST', '696868018088', '100000', '', '', '2024-03-24 19:24:16.703997', '', ''),
-(74, 'ZYCg9tQa5soOv36KBc7k', '26', 'Saiganesh Raju', '123456789', 'Savings', '', 'Withdrawal', 'Success ', '', '', '696868018088', '25', '<br /><b>Warning</b>:  Undefined property: stdClass::$phone in <b>C:\\Users\\gsaig\\OneDrive\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_withdraw_money.php</b> on line <b>166</b><br />', '', '2024-03-30 09:23:25.844131', '', ''),
-(75, 'ZYCg9tQa5soOv36KBc7k', '26', 'Saiganesh Raju', '123456789', 'Savings', '', 'Withdrawal', 'Success ', '', '', '696868018088', '25', '<br /><b>Warning</b>:  Undefined property: stdClass::$phone in <b>C:\\Users\\gsaig\\OneDrive\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_withdraw_money.php</b> on line <b>166</b><br />', '', '2024-03-30 10:09:51.204570', '', ''),
-(76, 'VM4bjgrS5w2lIA3WRcfo', '26', 'Saiganesh Raju', '123456789', 'Savings', '', 'Withdrawal', 'Success ', '', '', '696868018088', '10', '6281718680', '', '2024-03-31 09:08:19.508465', '', 'SRMIST'),
-(77, 'luUMdpvC94nVYAHyhkg0', '19', 'Saiganesh Raju', '398465721', 'Savings ', '', 'Deposit', 'Success ', '10', 'SRMIST', '696868018088', '20000', '', '', '2024-04-07 06:24:10.097078', '', '');
 
 -- --------------------------------------------------------
 
