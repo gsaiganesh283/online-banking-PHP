@@ -84,7 +84,7 @@ while ($auth = $res->fetch_object()) {
             <a href="pages_reset_pwd.php">I forgot my password</a>
           </p> -->
           <p class="mb-0">
-            <a href="pages_user_signup.php" class="text-center">Register a new account</a>
+            <a href="pages_user_signup_branch.php" class="text-center">Register a new account</a>
           </p>
           <!--
           Uncomment this line to allow account creations for admins
