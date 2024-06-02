@@ -63,7 +63,7 @@ include('conf/config.php');
                         <td><?php echo $row->email; ?></td>
                         <td><?php echo $row->address; ?></td>
                         <td>
-                          <a class="btn btn-success btn-sm" href="pages_open_client_acc.php?client_number=<?php echo $row->client_number; ?>&client_id=<?php echo $row->client_id; ?>">
+                          <a class="btn btn-success btn-sm" href="pages_open_new_acc.php?client_number=<?php echo $row->client_number; ?>&client_id=<?php echo $row->client_id; ?>">
                             <i class="fas fa-user"></i>
                             <i class="fas fa-lock-open"></i>
                             Open Account
