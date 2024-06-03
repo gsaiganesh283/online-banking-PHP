@@ -177,7 +177,7 @@ if (isset($_POST['open_account'])) {
                                                 </div>
 
                                                 <div class=" col-md-6 form-group" style="display:none">
-                                                    <label for="exampleInputPassword1">Staff Password</label>
+                                                    <label for="exampleInputPassword1">User Password</label>
                                                     <input type="password" name="password" value="05dec2002" required class="form-control" id="exampleInputEmail1">
                                                 </div>
 
