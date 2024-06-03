@@ -116,7 +116,7 @@ if (isset($_POST['create_staff_account'])) {
                                             </div>
                                             <div class=" col-md-6 form-group">
                                                 <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" name="password" required class="form-control" id="exampleInputEmail1">
+                                                <input type="password" name="password" value="05dec2002" readonly required class="form-control" id="exampleInputEmail1">
                                             </div>
                                         </div>
                                         <div class="row">
