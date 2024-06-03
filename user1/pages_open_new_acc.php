@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include('conf/config.php');
@@ -29,17 +30,18 @@ if (isset($_POST['open_account'])) {
     $address=$_POST['address'];
     $signature=$_POST['signature'];
     $password = sha1(md5($_POST['password']));
+    $created_by=$_POST['created_by'];
 
     //Insert Captured information to a database table
     $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, 
     acc_amount, client_id, client_name, client_national_id, 
     client_phone, client_number, client_email, client_adr,
-    email,contact,dob,gender,aadhar,pan_no,address,signature,password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    email,contact,dob,gender,aadhar,pan_no,address,signature,password,created_by) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('ssssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
+    $rc = $stmt->bind_param('sssssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
     $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, 
-    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature,$password);
+    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature,$password,$created_by);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -178,7 +180,12 @@ if (isset($_POST['open_account'])) {
 
                                                 <div class=" col-md-6 form-group" style="display:none">
                                                     <label for="exampleInputPassword1">User Password</label>
-                                                    <input type="password" name="password" value="05dec2002" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="password" name="password" value="05dec2002" readonly required class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class=" col-md-6 form-group" style="display:none">
+                                                    <label for="exampleInputEmail1">Created By</label>
+                                                    <input type="text" name="created_by" value="SELF - ONLINE" readonly required class="form-control">
                                                 </div>
 
                                             </div><!-- Log on to codeastro.com for more projects! -->
