@@ -28,17 +28,18 @@ if (isset($_POST['open_account'])) {
     $pan_no=$_POST['pan_no'];
     $address=$_POST['address'];
     $signature=$_POST['signature'];
+    $password = sha1(md5($_POST['password']));
 
     //Insert Captured information to a database table
     $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, 
     acc_amount, client_id, client_name, client_national_id, 
     client_phone, client_number, client_email, client_adr,
-    email,contact,dob,gender,aadhar,pan_no,address,signature) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    email,contact,dob,gender,aadhar,pan_no,address,signature,password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
+    $rc = $stmt->bind_param('ssssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
     $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, 
-    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature);
+    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature,$password);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -173,6 +174,11 @@ if (isset($_POST['open_account'])) {
                                                 <div class=" col-md-6 form-group" style="display:none">
                                                     <label for="exampleInputEmail1">Account Amount</label>
                                                     <input type="text" name="acc_amount" value="0" readonly required class="form-control">
+                                                </div>
+
+                                                <div class=" col-md-6 form-group" style="display:none">
+                                                    <label for="exampleInputPassword1">Staff Password</label>
+                                                    <input type="password" name="password" value="05dec2002" required class="form-control" id="exampleInputEmail1">
                                                 </div>
 
                                             </div><!-- Log on to codeastro.com for more projects! -->
