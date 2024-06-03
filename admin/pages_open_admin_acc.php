@@ -29,17 +29,18 @@ if (isset($_POST['open_account'])) {
     $address=$_POST['address'];
     $signature=$_POST['signature'];
     $password = sha1(md5($_POST['password']));
+    $created_by=$_POST['created_by'];
 
     //Insert Captured information to a database table
     $query = "INSERT INTO iB_bankAccounts (name, account_number, acc_type, acc_rates, acc_status, 
     acc_amount, client_id, client_name, client_national_id, 
     client_phone, client_number, client_email, client_adr,
-    email,contact,dob,gender,aadhar,pan_no,address,signature,password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    email,contact,dob,gender,aadhar,pan_no,address,signature,password,created_by) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('ssssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
+    $rc = $stmt->bind_param('sssssssssssssssssssssss', $name, $account_number, $acc_type, $acc_rates, $acc_status, 
     $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, 
-    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature,$password);
+    $client_number, $client_email, $client_adr,$email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature,$password,$created_by);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -68,7 +69,7 @@ if (isset($_POST['open_account'])) {
         <!-- Content Wrapper. Contains page content -->
         <?php
         $client_id = $_GET['client_id'];
-        $ret = "SELECT * FROM  iB_clients WHERE client_id = ? ";
+        $ret = "SELECT * FROM  iB_clients WHERE client_id = ?";
         $stmt = $mysqli->prepare($ret);
         $stmt->bind_param('i', $client_id);
         $stmt->execute(); //ok
@@ -82,7 +83,7 @@ if (isset($_POST['open_account'])) {
                 <section class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
-                            <div class="col-sm-6">
+                            <div class="centered-text">
                                 <h1>Open <?php echo $row->name; ?> iBanking Account</h1>
                             </div>
                             <div class="col-sm-6">
@@ -138,6 +139,7 @@ if (isset($_POST['open_account'])) {
                                                     <label for="exampleInputEmail1">Branch Email</label>
                                                     <input type="email" readonly name="client_email" value="<?php echo $row->email; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
+                                                
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Branch Address</label>
                                                     <input type="text" name="client_adr" readonly value="<?php echo $row->address; ?>" required class="form-control" id="exampleInputEmail1">
@@ -180,6 +182,18 @@ if (isset($_POST['open_account'])) {
                                                     <label for="exampleInputEmail1">Account Amount</label>
                                                     <input type="text" name="acc_amount" value="0" readonly required class="form-control">
                                                 </div>
+
+                                                <div class=" col-md-6 form-group" style="display:none">
+                                                    <label for="exampleInputPassword1">User Password</label>
+                                                    <input type="password" name="password" value="05dec2002" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class=" col-md-6 form-group" style="display:none">
+                                                    <label for="exampleInputEmail1">Created By</label>
+                                                    <input type="text" name="created_by" value="Admin" readonly required class="form-control">
+                                                </div>
+
+                                                
 
                                             </div><!-- Log on to codeastro.com for more projects! -->
                                             <div class="row">
