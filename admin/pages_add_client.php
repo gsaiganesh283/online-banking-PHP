@@ -94,7 +94,7 @@ if (isset($_POST['create_staff_account'])) {
                                                 $length = 4;
                                                 $_Number =  substr(str_shuffle('0123456789'), 1, $length);
                                                 ?>
-                                                <input type="text" readonly name="client_number" value="iBank-CLIENT-<?php echo $_Number; ?>" class="form-control" id="exampleInputPassword1">
+                                                <input type="text" readonly name="client_number" value="iBank-BRANCH-<?php echo $_Number; ?>" class="form-control" id="exampleInputPassword1">
                                             </div>
                                         </div>
 
@@ -105,7 +105,7 @@ if (isset($_POST['create_staff_account'])) {
                                             </div>
                                             <div class=" col-md-6 form-group">
                                                 <label for="exampleInputPassword1">National ID No.</label>
-                                                <input type="text" name="national_id" required class="form-control" id="exampleInputEmail1">
+                                                <input type="text" name="national_id" value="<?php echo $_Number; ?>"readonly required class="form-control" id="exampleInputEmail1">
                                             </div>
                                         </div>
 
