@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 1000,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "student_details",
+            "database": "internetbanking",
+            "username": "root",
+            "connectionTimeout": 1000,
+            "askForPassword": true
+        }
+    ]
+}
