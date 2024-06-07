@@ -190,7 +190,7 @@ if (isset($_POST['open_account'])) {
 
                                                 <div class=" col-md-6 form-group" style="display:none">
                                                     <label for="exampleInputEmail1">Created By</label>
-                                                    <input type="text" name="created_by" value="ADMIN" readonly required class="form-control">
+                                                    <input type="text" name="created_by" value="CLIENT" readonly required class="form-control">
                                                 </div>
 
                                                 
