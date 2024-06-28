@@ -46,7 +46,7 @@ if (isset($_POST['withdrawal'])) {
 
 
         //Insert Captured information to a database table
-        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, client_phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         $notification = "INSERT INTO  iB_notifications (notification_details) VALUES (?)";
         $stmt = $mysqli->prepare($query);
         $notification_stmt = $mysqli->prepare($notification);
