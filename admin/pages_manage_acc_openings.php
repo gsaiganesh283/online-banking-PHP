@@ -100,7 +100,7 @@ if (isset($_GET['deleteBankAcc'])) {
                         <td><?php echo $row->client_name; ?></td>
                         <td><?php echo date("d-M-Y", strtotime($dateOpened)); ?></td>
                         <td>
-                          <a class="btn btn-success btn-sm" href="pages_update_client_accounts.php?account_id=<?php echo $row->account_id; ?>">
+                          <a class="btn btn-success btn-sm" href="pages_update_user_accounts.php?account_id=<?php echo $row->account_id; ?>">
                             <i class="fas fa-cogs"></i>
                             <!-- <i class="fas fa-briefcase"></i> -->
                             Manage
