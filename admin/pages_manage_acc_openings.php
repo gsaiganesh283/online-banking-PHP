@@ -72,7 +72,7 @@ if (isset($_GET['deleteBankAcc'])) {
                       <th>Acc Number</th>
                       <th>Rate</th>
                       <th>Acc Type</th>
-                      <th>Acc Owner</th>
+                      <th>Branch</th>
                       <th>Date Opened</th>
                       <th>Action</th>
                     </tr>
