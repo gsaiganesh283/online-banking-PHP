@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 01, 2024 at 03:31 PM
+-- Generation Time: Jul 20, 2024 at 08:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,7 +67,7 @@ INSERT INTO `ib_acc_types` (`acctype_id`, `name`, `description`, `rate`, `code`)
 (4, 'Recurring deposit', '<p><strong>Recurring deposit account or RD account</strong> is opened by those who want to save certain amount of money regularly for a certain period of time and earn a higher interest rate.&nbsp;In RD&nbsp;account a&nbsp;fixed amount is deposited&nbsp;every month for a specified period and the total amount is repaid with interest at the end of the particular fixed period.&nbsp;</p><p>The period of deposit is minimum six months and maximum ten years.&nbsp;The interest rates vary&nbsp;for different plans based on the amount one saves and the period of time and also on banks. No withdrawals are allowed from the RD account. However, the bank may allow to close the account before the maturity period.</p><p>These accounts can be opened in single or joint names. Banks are also providing the Nomination facility to the RD account holders.&nbsp;</p>', '15', 'ACC-CAT-VBQLE'),
 (5, 'Fixed Deposit Account', '<p>In <strong>Fixed Deposit Account</strong> (also known as <strong>FD Account</strong>), a particular sum of money is deposited in a bank for specific&nbsp;period of time. It&rsquo;s one time deposit and one time take away (withdraw) account.&nbsp;The money deposited in this account can not be withdrawn before the expiry of period.&nbsp;</p><p>However, in case of need,&nbsp; the depositor can ask for closing the fixed deposit prematurely by paying a penalty. The penalty amount varies with banks.</p><p>A high interest rate is paid on fixed deposits. The rate of interest paid for fixed deposit vary according to amount, period and also from bank to bank.</p>', '40', 'ACC-CAT-A86GO'),
 (7, 'Current account', '<p><strong>Current account</strong> is mainly for business persons, firms, companies, public enterprises etc and are never used for the purpose of investment or savings.These deposits are the most liquid deposits and there are no limits for number of transactions or the amount of transactions in a day. While, there is no interest paid on amount held in the account, banks charges certain &nbsp;service charges, on such accounts. The current accounts do not have any fixed maturity as these are on continuous basis accounts.</p>', '20', 'ACC-CAT-4O8QW'),
-(13, 'education', '', '77', 'ACC-CAT-H27Z1');
+(13, 'Education', '', '77', 'ACC-CAT-H27Z1');
 
 -- --------------------------------------------------------
 
@@ -122,16 +122,19 @@ CREATE TABLE `ib_bankaccounts` (
   `signature` text CHARACTER SET geostd8 COLLATE geostd8_general_ci NOT NULL,
   `password` text NOT NULL,
   `profile_pic` blob NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `created_by` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ib_bankaccounts`
 --
 
-INSERT INTO `ib_bankaccounts` (`account_id`, `name`, `account_number`, `gender`, `acc_type`, `acc_rates`, `acc_status`, `acc_amount`, `client_id`, `client_name`, `client_national_id`, `client_phone`, `client_number`, `client_email`, `client_adr`, `email`, `contact`, `dob`, `aadhar`, `pan_no`, `address`, `signature`, `password`, `profile_pic`, `created_at`) VALUES
-(36, 'Durga Bhavani Y', '738462915', 'Female', 'Savings ', '20', 'Active', '0', '19', 'POTHERI', '5089', '6281718680', 'iBank-CLIENT-6720', 'gsaiganesh628@gmail.com', 'Potheri', 'bhavani@gmail.com', '9390475897', '2003-06-28', '123456789123', 'FAFPR6122A', 'Pileru', 'Durga Bhavani Y', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-05-31 15:12:06.843636'),
-(37, 'Saiganesh Raju Gottam', '153892460', 'Male', 'Savings ', '20', 'Active', '0', '19', 'POTHERI', '5089', '6281718680', 'iBank-CLIENT-6720', 'gsaiganesh628@gmail.com', 'Potheri', 'saiganesh@gmail.com', '6281718680', '2002-12-05', '696868018088', 'FAFPR6122A', 'Potheri', 'Saiganesh Raju Gottam', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-05-31 15:11:55.690261');
+INSERT INTO `ib_bankaccounts` (`account_id`, `name`, `account_number`, `gender`, `acc_type`, `acc_rates`, `acc_status`, `acc_amount`, `client_id`, `client_name`, `client_national_id`, `client_phone`, `client_number`, `client_email`, `client_adr`, `email`, `contact`, `dob`, `aadhar`, `pan_no`, `address`, `signature`, `password`, `profile_pic`, `created_at`, `created_by`) VALUES
+(47, 'Saiganesh Raju Gottam', '893450712', 'Male', 'Fixed Deposit Account ', '40', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'saiganesh@gmail.com', '6281718680', '2002-12-05', '696868018088', 'FAFPR6122A', 'Pileru', 'Saiganesh Raju Gottam', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:26:15.995656', 'Admin'),
+(50, 'Durga Bhavani Y', '937468501', 'Female', 'Current account ', '20', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'bhavani@gmail.com', '9390475897', '2003-06-28', '123456789012', 'ABCDE1234F', 'Tanaku', 'Durga Bhavani Y', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:26:28.044639', 'STAFF'),
+(51, 'Mummadi Venkata Pavan Kumar', '714956823', 'Male', 'Recurring deposit ', '15', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'pavan@gmail.com', '1234567890', '2004-01-13', '123456789012', 'ABCDE1234F', 'Kadapa', 'Mummadi Venkata Pavan Kumar', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:26:05.256193', 'CLIENT'),
+(52, 'Shaik Mohammed Fahad', '329761084', 'Male', 'Education ', '77', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'fahad@gmail.com', '1234567890', '2003-01-06', '123456789012', 'ABCDE1234F', 'Pileru', 'Shaik Mohammed Fahad', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:28:01.994960', 'SELF - ONLINE');
 
 -- --------------------------------------------------------
 
@@ -156,7 +159,8 @@ CREATE TABLE `ib_clients` (
 --
 
 INSERT INTO `ib_clients` (`client_id`, `name`, `national_id`, `phone`, `address`, `email`, `password`, `profile_pic`, `client_number`) VALUES
-(19, 'POTHERI', '5089', '6281718680', 'Potheri', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-CLIENT-6720');
+(21, 'POTHERI', '9857', '6281718680', 'Potheri', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-BRANCH-9857'),
+(22, 'SRM NAGAR', '6182', '9390475897', 'SRM Nagar, Kattankulathur', 'yy2819@srmist.edu.in', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-BRANCH-6182');
 
 -- --------------------------------------------------------
 
@@ -197,7 +201,10 @@ INSERT INTO `ib_notifications` (`notification_id`, `notification_details`, `crea
 (51, ' Has Withdrawn $ 25 From Bank Account 123456789', '2024-03-30 09:23:25.847334'),
 (52, ' Has Withdrawn $ 25 From Bank Account 123456789', '2024-03-30 10:09:51.207213'),
 (53, ' Has Withdrawn $ 10 From Bank Account 123456789', '2024-03-30 10:10:05.134884'),
-(54, 'SRMIST Has Deposited $ 20000 To Bank Account 398465721', '2024-04-07 06:24:10.102488');
+(54, 'SRMIST Has Deposited $ 20000 To Bank Account 398465721', '2024-04-07 06:24:10.102488'),
+(55, 'POTHERI Has Deposited $ 200000 To Bank Account 329761084', '2024-06-28 08:04:01.865540'),
+(56, 'POTHERI Has Transfered $ 20000 From Bank Account 329761084 To Bank Account 893450712', '2024-06-28 08:06:39.121983'),
+(57, 'POTHERI Has Withdrawn $ 2000 From Bank Account 329761084', '2024-06-28 08:25:10.572110');
 
 -- --------------------------------------------------------
 
@@ -207,7 +214,7 @@ INSERT INTO `ib_notifications` (`notification_id`, `notification_details`, `crea
 
 CREATE TABLE `ib_staff` (
   `staff_id` int(20) NOT NULL,
-  `name` varchar(200) NOT NULL,
+  `staff_name` varchar(200) NOT NULL,
   `staff_number` varchar(200) NOT NULL,
   `phone` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
@@ -220,7 +227,7 @@ CREATE TABLE `ib_staff` (
 -- Dumping data for table `ib_staff`
 --
 
-INSERT INTO `ib_staff` (`staff_id`, `name`, `staff_number`, `phone`, `email`, `password`, `sex`, `profile_pic`) VALUES
+INSERT INTO `ib_staff` (`staff_id`, `staff_name`, `staff_number`, `phone`, `email`, `password`, `sex`, `profile_pic`) VALUES
 (6, 'Saiganesh Raju Gottam', 'iBank-STAFF-0165', '6281718680', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Male', 'my_photo.jpg');
 
 -- --------------------------------------------------------
@@ -263,12 +270,21 @@ CREATE TABLE `ib_transactions` (
   `client_name` varchar(200) NOT NULL,
   `client_national_id` varchar(200) NOT NULL,
   `transaction_amt` varchar(200) NOT NULL,
-  `phone` varchar(200) NOT NULL,
+  `client_phone` varchar(200) NOT NULL,
   `receiving_acc_no` varchar(200) NOT NULL,
   `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
   `receiving_acc_name` varchar(200) NOT NULL,
   `receiving_acc_holder` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `ib_transactions`
+--
+
+INSERT INTO `ib_transactions` (`tr_id`, `tr_code`, `account_id`, `name`, `account_number`, `acc_type`, `acc_amount`, `tr_type`, `tr_status`, `client_id`, `client_name`, `client_national_id`, `transaction_amt`, `client_phone`, `receiving_acc_no`, `created_at`, `receiving_acc_name`, `receiving_acc_holder`) VALUES
+(78, 'JM0HLv3V64ERAT8sDfaF', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Deposit', 'Success ', '21', 'POTHERI', '9857', '200000', '', '', '2024-06-28 08:04:01.862774', '', ''),
+(79, 'cUEpaOmsXJwvt4MuWPGr', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Transfer', 'Success ', '21', 'POTHERI', '9857', '20000', '6281718680', '893450712', '2024-06-28 08:06:39.119337', 'Saiganesh Raju Gottam', 'SRM NAGAR'),
+(80, 'yrlEaUKY8GTfNS0JLZn6', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Withdrawal', 'Success ', '21', 'POTHERI', '9857', '2000', '<br /><b>Warning</b>:  Undefined property: stdClass::$phone in <b>C:\\Users\\gsaig\\OneDrive\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_withdraw_money.php</b> on line <b>166</b><br />', '', '2024-06-28 08:25:10.570354', '', '');
 
 -- --------------------------------------------------------
 
@@ -429,19 +445,19 @@ ALTER TABLE `ib_admin`
 -- AUTO_INCREMENT for table `ib_bankaccounts`
 --
 ALTER TABLE `ib_bankaccounts`
-  MODIFY `account_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `account_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `ib_clients`
 --
 ALTER TABLE `ib_clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `ib_notifications`
 --
 ALTER TABLE `ib_notifications`
-  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `ib_staff`
@@ -459,7 +475,7 @@ ALTER TABLE `ib_systemsettings`
 -- AUTO_INCREMENT for table `ib_transactions`
 --
 ALTER TABLE `ib_transactions`
-  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `ib_user`
