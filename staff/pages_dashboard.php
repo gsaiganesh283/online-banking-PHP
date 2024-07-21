@@ -27,7 +27,7 @@ if (isset($_GET['Clear_Notifications'])) {
     */
 
 //return total number of ibank clients
-$result = "SELECT count(*) FROM iB_clients";
+$result = "SELECT staff_branch FROM iB_staff";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iBClients);
@@ -152,7 +152,7 @@ $stmt->close();
               <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text"> Clients</span>
+                  <span class="info-box-text">Branch</span>
                   <span class="info-box-number">
                     <?php echo $iBClients; ?>
                   </span>
