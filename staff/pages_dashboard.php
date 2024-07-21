@@ -27,7 +27,7 @@ if (isset($_GET['Clear_Notifications'])) {
     */
 
 //return total number of ibank clients
-$result = "SELECT staff_branch FROM iB_staff";
+$result = "SELECT staff_branch FROM iB_staff where staff_id = $staff_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iBClients);
@@ -59,7 +59,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Deposits
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit'";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_deposits);
@@ -67,7 +67,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Withdrawals
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal'  ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_withdrawal);
