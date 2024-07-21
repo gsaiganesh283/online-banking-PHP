@@ -4,7 +4,7 @@
     page with logged in user instance
     -->
   <?php
-  $staff_id = $_SESSION['account_id'];
+  $account_id = $_SESSION['account_id'];
   $ret = "SELECT * FROM  iB_bankaccounts  WHERE account_id = ? ";
   $stmt = $mysqli->prepare($ret);
   $stmt->bind_param('i', $account_id);
