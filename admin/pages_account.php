@@ -250,11 +250,14 @@ if (isset($_POST['change_password'])) {
                                                                 <input type="file" name="profile_pic" class="form-control custom-file-input" id="exampleInputFile">
                                                                 <label class="custom-file-label col-form-label" for="exampleInputFile">Choose file</label>
                                                             </div>
-                                                            <div class="mt-2">
+                                                            
+                                                        </div>
+                                                        <div class="input-group col-sm-10">
+                                                            <div class="mt-3">
                                                                 <input type="checkbox" id="use_webcam" name="use_webcam"> 
                                                                 <label for="use_webcam">Use Webcam to Capture Photo</label>
                                                             </div>
-                                                            <div id="webcam_container" style="display:none;" class="mt-2">
+                                                            <div id="webcam_container" style="display:none;" class="mt-6">
                                                                 <video id="video" width="320" height="240" autoplay></video>
                                                                 <button id="snap" type="button" class="btn btn-primary mt-2">Capture Photo</button>
                                                                 <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
