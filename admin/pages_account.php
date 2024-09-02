@@ -125,11 +125,11 @@ if (isset($_POST['change_password'])) {
 
                                         <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
 
-                                        <p class="text-muted text-center">@Admin iBanking </p>
+                                        <p class="text-muted text-center">Admin@iBanking </p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
-                                                <b>Email: </b> <a class="float-right"><?php echo $row->email; ?></a>
+                                                <b>Email: </b>  <a class="float-right"><?php echo $row->email; ?></a>
                                             </li>
                                             <li class="list-group-item">
                                                 <b>Number: </b> <a class="float-right"><?php echo $row->number; ?></a>
