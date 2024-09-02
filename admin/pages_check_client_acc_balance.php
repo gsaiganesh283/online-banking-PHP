@@ -137,7 +137,7 @@ $admin_id = $_SESSION['admin_id'];
                                         <div class="col-sm-6 invoice-col">
                                             Account Details
                                             <address>
-                                                <strong><?php echo $row->acc_name; ?></strong><br>
+                                                <strong><?php echo $row->name; ?></strong><br>
                                                 Acc No: <?php echo $row->account_number; ?><br>
                                                 Acc Type: <?php echo $row->acc_type; ?><br>
                                                 Acc Rates: <?php echo $row->acc_rates; ?> %
