@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 20, 2024 at 08:19 PM
+-- Host: 127.0.0.1
+-- Generation Time: Sep 02, 2024 at 07:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -121,20 +121,21 @@ CREATE TABLE `ib_bankaccounts` (
   `address` varchar(200) CHARACTER SET geostd8 COLLATE geostd8_general_ci NOT NULL,
   `signature` text CHARACTER SET geostd8 COLLATE geostd8_general_ci NOT NULL,
   `password` text NOT NULL,
-  `profile_pic` blob NOT NULL,
   `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `created_by` varchar(200) NOT NULL
+  `created_by` varchar(200) NOT NULL,
+  `profile_pic` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ib_bankaccounts`
 --
 
-INSERT INTO `ib_bankaccounts` (`account_id`, `name`, `account_number`, `gender`, `acc_type`, `acc_rates`, `acc_status`, `acc_amount`, `client_id`, `client_name`, `client_national_id`, `client_phone`, `client_number`, `client_email`, `client_adr`, `email`, `contact`, `dob`, `aadhar`, `pan_no`, `address`, `signature`, `password`, `profile_pic`, `created_at`, `created_by`) VALUES
-(47, 'Saiganesh Raju Gottam', '893450712', 'Male', 'Fixed Deposit Account ', '40', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'saiganesh@gmail.com', '6281718680', '2002-12-05', '696868018088', 'FAFPR6122A', 'Pileru', 'Saiganesh Raju Gottam', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:26:15.995656', 'Admin'),
-(50, 'Durga Bhavani Y', '937468501', 'Female', 'Current account ', '20', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'bhavani@gmail.com', '9390475897', '2003-06-28', '123456789012', 'ABCDE1234F', 'Tanaku', 'Durga Bhavani Y', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:26:28.044639', 'STAFF'),
-(51, 'Mummadi Venkata Pavan Kumar', '714956823', 'Male', 'Recurring deposit ', '15', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'pavan@gmail.com', '1234567890', '2004-01-13', '123456789012', 'ABCDE1234F', 'Kadapa', 'Mummadi Venkata Pavan Kumar', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:26:05.256193', 'CLIENT'),
-(52, 'Shaik Mohammed Fahad', '329761084', 'Male', 'Education ', '77', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'fahad@gmail.com', '1234567890', '2003-01-06', '123456789012', 'ABCDE1234F', 'Pileru', 'Shaik Mohammed Fahad', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', '2024-06-28 08:28:01.994960', 'SELF - ONLINE');
+INSERT INTO `ib_bankaccounts` (`account_id`, `name`, `account_number`, `gender`, `acc_type`, `acc_rates`, `acc_status`, `acc_amount`, `client_id`, `client_name`, `client_national_id`, `client_phone`, `client_number`, `client_email`, `client_adr`, `email`, `contact`, `dob`, `aadhar`, `pan_no`, `address`, `signature`, `password`, `created_at`, `created_by`, `profile_pic`) VALUES
+(47, 'Saiganesh Raju Gottam', '893450712', 'Male', 'Fixed Deposit Account ', '40', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'saiganesh@gmail.com', '6281718680', '2002-12-05', '696868018088', 'FAFPR6122A', 'Pileru', 'Saiganesh Raju Gottam', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:26:15.995656', 'Admin', ''),
+(50, 'Durga Bhavani Y', '937468501', 'Female', 'Current account ', '20', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'bhavani@gmail.com', '9390475897', '2003-06-28', '123456789012', 'ABCDE1234F', 'Tanaku', 'Durga Bhavani Y', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:26:28.044639', 'STAFF', ''),
+(51, 'Mummadi Venkata Pavan Kumar', '714956823', 'Male', 'Recurring deposit ', '15', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'pavan@gmail.com', '1234567890', '2004-01-13', '123456789012', 'ABCDE1234F', 'Kadapa', 'Mummadi Venkata Pavan Kumar', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:26:05.256193', 'CLIENT', ''),
+(52, 'Shaik Mohammed Fahad', '329761084', 'Male', 'Education ', '77', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'fahad@gmail.com', '1234567890', '2003-01-06', '123456789012', 'ABCDE1234F', 'Pileru', 'Shaik Mohammed Fahad', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:28:01.994960', 'SELF - ONLINE', ''),
+(53, 'Cheruvu Chethan', '241795306', 'Male', 'Education ', '77', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'cc2443@srmist.edu.in', '9030568531', '0000-00-00', '123456789012', 'ABCDE1234F', 'sodam', 'Chethan', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-07-21 04:29:17.512382', 'ADMIN', '');
 
 -- --------------------------------------------------------
 
@@ -204,7 +205,11 @@ INSERT INTO `ib_notifications` (`notification_id`, `notification_details`, `crea
 (54, 'SRMIST Has Deposited $ 20000 To Bank Account 398465721', '2024-04-07 06:24:10.102488'),
 (55, 'POTHERI Has Deposited $ 200000 To Bank Account 329761084', '2024-06-28 08:04:01.865540'),
 (56, 'POTHERI Has Transfered $ 20000 From Bank Account 329761084 To Bank Account 893450712', '2024-06-28 08:06:39.121983'),
-(57, 'POTHERI Has Withdrawn $ 2000 From Bank Account 329761084', '2024-06-28 08:25:10.572110');
+(57, 'POTHERI Has Withdrawn $ 2000 From Bank Account 329761084', '2024-06-28 08:25:10.572110'),
+(58, 'POTHERI Has Deposited $ 250000 To Bank Account 714956823', '2024-07-21 06:34:57.091518'),
+(59, 'SRM NAGAR Has Deposited $ 50000 To Bank Account 893450712', '2024-07-21 06:35:18.882556'),
+(60, 'SRM NAGAR Has Deposited $ 50000 To Bank Account 893450712', '2024-07-21 10:17:33.277299'),
+(61, 'SRM NAGAR Has Withdrawn $ 20000 From Bank Account 893450712', '2024-07-21 10:18:00.661029');
 
 -- --------------------------------------------------------
 
@@ -214,6 +219,8 @@ INSERT INTO `ib_notifications` (`notification_id`, `notification_details`, `crea
 
 CREATE TABLE `ib_staff` (
   `staff_id` int(20) NOT NULL,
+  `branch_id` int(100) NOT NULL,
+  `staff_branch` varchar(200) NOT NULL,
   `staff_name` varchar(200) NOT NULL,
   `staff_number` varchar(200) NOT NULL,
   `phone` varchar(200) NOT NULL,
@@ -227,8 +234,9 @@ CREATE TABLE `ib_staff` (
 -- Dumping data for table `ib_staff`
 --
 
-INSERT INTO `ib_staff` (`staff_id`, `staff_name`, `staff_number`, `phone`, `email`, `password`, `sex`, `profile_pic`) VALUES
-(6, 'Saiganesh Raju Gottam', 'iBank-STAFF-0165', '6281718680', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Male', 'my_photo.jpg');
+INSERT INTO `ib_staff` (`staff_id`, `branch_id`, `staff_branch`, `staff_name`, `staff_number`, `phone`, `email`, `password`, `sex`, `profile_pic`) VALUES
+(6, 21, 'POTHERI', 'Saiganesh Raju Gottam', 'iBank-STAFF-0165', '6281718680', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Male', 'my_photo.jpg'),
+(8, 22, 'SRM NAGAR', 'Fahad Shaik', 'iBank-STAFF-2568', '9030475897', 'fahad@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Male', '');
 
 -- --------------------------------------------------------
 
@@ -284,7 +292,10 @@ CREATE TABLE `ib_transactions` (
 INSERT INTO `ib_transactions` (`tr_id`, `tr_code`, `account_id`, `name`, `account_number`, `acc_type`, `acc_amount`, `tr_type`, `tr_status`, `client_id`, `client_name`, `client_national_id`, `transaction_amt`, `client_phone`, `receiving_acc_no`, `created_at`, `receiving_acc_name`, `receiving_acc_holder`) VALUES
 (78, 'JM0HLv3V64ERAT8sDfaF', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Deposit', 'Success ', '21', 'POTHERI', '9857', '200000', '', '', '2024-06-28 08:04:01.862774', '', ''),
 (79, 'cUEpaOmsXJwvt4MuWPGr', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Transfer', 'Success ', '21', 'POTHERI', '9857', '20000', '6281718680', '893450712', '2024-06-28 08:06:39.119337', 'Saiganesh Raju Gottam', 'SRM NAGAR'),
-(80, 'yrlEaUKY8GTfNS0JLZn6', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Withdrawal', 'Success ', '21', 'POTHERI', '9857', '2000', '<br /><b>Warning</b>:  Undefined property: stdClass::$phone in <b>C:\\Users\\gsaig\\OneDrive\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_withdraw_money.php</b> on line <b>166</b><br />', '', '2024-06-28 08:25:10.570354', '', '');
+(80, 'yrlEaUKY8GTfNS0JLZn6', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Withdrawal', 'Success ', '21', 'POTHERI', '9857', '2000', '<br /><b>Warning</b>:  Undefined property: stdClass::$phone in <b>C:\\Users\\gsaig\\OneDrive\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_withdraw_money.php</b> on line <b>166</b><br />', '', '2024-06-28 08:25:10.570354', '', ''),
+(81, 'tQhqsxW3FE9lk18dXU6A', '51', 'Mummadi Venkata Pavan Kumar', '714956823', 'Recurring deposit ', '', 'Deposit', 'Success ', '21', 'POTHERI', '9857', '250000', '', '', '2024-07-21 06:34:57.082131', '', ''),
+(82, 'eqzFT9XcHLKaI3tGvRdV', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '50000', '', '', '2024-07-21 06:35:18.868293', '', ''),
+(83, 'eqzFT9XcHLKaI3tGvRdV', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '50000', '', '', '2024-07-21 10:17:33.269785', '', '');
 
 -- --------------------------------------------------------
 
@@ -445,7 +456,7 @@ ALTER TABLE `ib_admin`
 -- AUTO_INCREMENT for table `ib_bankaccounts`
 --
 ALTER TABLE `ib_bankaccounts`
-  MODIFY `account_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `account_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `ib_clients`
@@ -457,13 +468,13 @@ ALTER TABLE `ib_clients`
 -- AUTO_INCREMENT for table `ib_notifications`
 --
 ALTER TABLE `ib_notifications`
-  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `ib_staff`
 --
 ALTER TABLE `ib_staff`
-  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ib_systemsettings`
@@ -475,7 +486,7 @@ ALTER TABLE `ib_systemsettings`
 -- AUTO_INCREMENT for table `ib_transactions`
 --
 ALTER TABLE `ib_transactions`
-  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `ib_user`
