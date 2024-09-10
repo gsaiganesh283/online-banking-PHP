@@ -13,7 +13,7 @@ if (isset($_POST['open_account'])) {
     $acc_rates = $_POST['acc_rates'];
     $acc_status = $_POST['acc_status'];
     $acc_amount = $_POST['acc_amount'];
-    $client_id  = $_GET['client_id'];
+    // $client_id  = $_GET['client_id'];
     $client_national_id = $_POST['client_national_id'];
     $client_name = $_POST['client_name'];
     $client_phone = $_POST['client_phone'];
