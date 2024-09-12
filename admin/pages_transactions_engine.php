@@ -111,7 +111,7 @@ if (isset($_GET['RollBack_Transaction'])) {
                         <td><?php echo $row->account_number; ?></td>
                         <td><?php echo $row->name; ?></td>
                         <td><?php echo $alertClass; ?></td>
-                        <td>$ <?php echo $row->transaction_amt; ?></td>
+                        <td>₹ <?php echo $row->transaction_amt; ?></td>
                         <td><?php echo $row->client_name; ?></td>
                         <td><?php echo $row->receiving_acc_no; ?></td>
                         <td><?php echo $row->receiving_acc_name; ?></td>
