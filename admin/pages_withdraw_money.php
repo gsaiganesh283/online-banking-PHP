@@ -19,7 +19,7 @@ if (isset($_POST['withdrawal'])) {
     $client_name  = $_POST['client_name'];
     $client_national_id  = $_POST['client_national_id'];
     $transaction_amt = $_POST['transaction_amt'];
-    $phone = $_POST['phone'];
+    $client_phone = $_POST['client_phone'];
     //$acc_new_amt = $_POST['acc_new_amt'];
     //$notification_details = $_POST['notification_details'];
     $notification_details = "$client_name Has Withdrawn $ $transaction_amt From Bank Account $account_number";
@@ -163,7 +163,7 @@ if (isset($_POST['withdrawal'])) {
                                                 </div>
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputEmail1">Client Phone Number</label>
-                                                    <input type="text" readonly name="phone" value="<?php echo $row->phone; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly name="phone" value="<?php echo $row->client_phone; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
 
