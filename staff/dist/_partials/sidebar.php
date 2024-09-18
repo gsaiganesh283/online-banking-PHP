@@ -42,7 +42,7 @@
             <?php echo $profile_picture; ?>
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?php echo $row->staff_name; ?></a>
+            <a href="#" class="d-block"><?php echo $row->name; ?></a>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
            
 
             <!--Clients -->
-            <!-- <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
@@ -99,7 +99,7 @@
                   </a>
                 </li>
               </ul>
-            </li> -->
+            </li>
             <!-- ./ Clients -->
 
             <!--iBank Accounts-->

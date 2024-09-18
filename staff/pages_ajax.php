@@ -23,7 +23,7 @@ if (!empty($_POST["iBankAccNumber"])) {
 <?php
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
-<?php echo htmlentities($row['name']); ?>
+<?php echo htmlentities($row['acc_name']); ?>
 <?php
     }
 }

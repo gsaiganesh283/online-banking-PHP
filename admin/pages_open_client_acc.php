@@ -3,9 +3,9 @@ session_start();
 include('conf/config.php');
 include('conf/checklogin.php');
 check_login();
-$staff_id = $_SESSION['staff_id'];
+$admin_id = $_SESSION['admin_id'];
 //register new account
-if (isset($_POST['update_account'])) {
+if (isset($_POST['open_account'])) {
     //Client open account
     $acc_name = $_POST['acc_name'];
     $account_number = $_POST['account_number'];
@@ -13,7 +13,7 @@ if (isset($_POST['update_account'])) {
     $acc_rates = $_POST['acc_rates'];
     $acc_status = $_POST['acc_status'];
     $acc_amount = $_POST['acc_amount'];
-    $account_id  = $_GET['account_id'];
+    $client_id  = $_GET['client_id'];
     $client_national_id = $_POST['client_national_id'];
     $client_name = $_POST['client_name'];
     $client_phone = $_POST['client_phone'];
@@ -22,15 +22,15 @@ if (isset($_POST['update_account'])) {
     $client_adr  = $_POST['client_adr'];
 
     //Insert Captured information to a database table
-    $query = "UPDATE  iB_bankAccounts  SET acc_name=?, account_number=?, acc_type=?, acc_rates=?, acc_status=?, acc_amount=?, client_name=?, client_national_id=?, client_phone=?, client_number=?, client_email=?, client_adr=? WHERE account_id =?";
+    $query = "INSERT INTO iB_bankAccounts (acc_name, account_number, acc_type, acc_rates, acc_status, acc_amount, client_id, client_name, client_national_id, client_phone, client_number, client_email, client_adr) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('ssssssssssssi', $acc_name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount,  $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr, $account_id);
+    $rc = $stmt->bind_param('sssssssssssss', $acc_name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount, $client_id, $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
     if ($stmt) {
-        $success = "iBank Account Updated";
+        $success = "iBank Account Opened";
     } else {
         $err = "Please Try Again Or Try Later";
     }
@@ -53,10 +53,10 @@ if (isset($_POST['update_account'])) {
 
         <!-- Content Wrapper. Contains page content -->
         <?php
-        $account_id = $_GET['account_id'];
-        $ret = "SELECT * FROM  iB_bankAccounts WHERE account_id = ? ";
+        $client_id = $_GET['client_id'];
+        $ret = "SELECT * FROM  iB_clients WHERE client_id = ? ";
         $stmt = $mysqli->prepare($ret);
-        $stmt->bind_param('i', $account_id);
+        $stmt->bind_param('i', $client_id);
         $stmt->execute(); //ok
         $res = $stmt->get_result();
         $cnt = 1;
@@ -69,14 +69,14 @@ if (isset($_POST['update_account'])) {
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Update <?php echo $row->client_name; ?> iBanking Account</h1>
+                                <h1>Open <?php echo $row->name; ?> iBanking Account</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="pages_open_acc.php">iBanking Accounts</a></li>
-                                    <li class="breadcrumb-item"><a href="pages_open_acc.php">Manage </a></li>
-                                    <li class="breadcrumb-item active"><?php echo $row->client_name; ?></li>
+                                    <li class="breadcrumb-item"><a href="pages_open_acc.php">Open </a></li>
+                                    <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -100,7 +100,7 @@ if (isset($_POST['update_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Name</label>
-                                                    <input type="text" readonly name="client_name" value="<?php echo $row->client_name; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly name="client_name" value="<?php echo $row->name; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputPassword1">Client Number</label>
@@ -111,40 +111,27 @@ if (isset($_POST['update_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Phone Number</label>
-                                                    <input type="text" readonly name="client_phone" value="<?php echo $row->client_phone; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly name="client_phone" value="<?php echo $row->phone; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputPassword1">Client National ID No.</label>
-                                                    <input type="text" readonly value="<?php echo $row->client_national_id; ?>" name="client_national_id" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" readonly value="<?php echo $row->national_id; ?>" name="client_national_id" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Email</label>
-                                                    <input type="email" readonly name="client_email" value="<?php echo $row->client_email; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="email" readonly name="client_email" value="<?php echo $row->email; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Client Address</label>
-                                                    <input type="text" name="client_adr" readonly value="<?php echo $row->client_adr; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" name="client_adr" readonly value="<?php echo $row->address; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
                                             <!-- ./End Personal Details -->
 
                                             <!--Bank Account Details-->
-
-                                            <div class="row">
-                                                <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Account Name</label>
-                                                    <input type="text" name="acc_name" value="<?php echo $row->acc_name; ?>" required class="form-control" id="exampleInputEmail1">
-                                                </div>
-
-                                                <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Account Number</label>
-                                                    <input type="text" name="account_number" value="<?php echo $row->account_number; ?>" required class="form-control" id="exampleInputEmail1">
-                                                </div>
-                                            </div>
-
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Account Type</label>
@@ -180,11 +167,27 @@ if (isset($_POST['update_account'])) {
                                                     <input type="text" name="acc_amount" value="0" readonly required class="form-control">
                                                 </div>
 
+                                            </div><!-- Log on to codeastro.com for more projects! -->
+                                            <div class="row">
+                                                <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Name</label>
+                                                    <input type="text" name="acc_name" required class="form-control" id="exampleInputEmail1">
+                                                </div>
+
+                                                <div class=" col-md-6 form-group">
+                                                    <label for="exampleInputEmail1">Account Number</label>
+                                                    <?php
+                                                    //PHP function to generate random account number
+                                                    $length = 12;
+                                                    $_accnumber =  substr(str_shuffle('0123456789'), 1, $length);
+                                                    ?>
+                                                    <input type="text" name="account_number" value="<?php echo $_accnumber; ?>" required class="form-control" id="exampleInputEmail1">
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
-                                            <button type="submit" name="update_account" class="btn btn-success">Update iBanking Account</button>
+                                            <button type="submit" name="open_account" class="btn btn-success">Open iBanking Account</button>
                                         </div>
                                     </form>
                                 </div>

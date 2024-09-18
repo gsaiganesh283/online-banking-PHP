@@ -70,13 +70,10 @@ if (isset($_GET['RollBack_Transaction'])) {
                     <tr>
                       <th>#</th>
                       <th>Transaction Code</th>
-                      <th>Sender Account No.</th>
-                      <th>Sender Name</th>
+                      <th>Account No.</th>
                       <th>Type</th>
                       <th>Amount</th>
-                      <th>Branch Name</th>
-                      <th>Receiver Account No.</th>
-                      <th>Receiver Name</th>
+                      <th>Acc. Owner</th>
                       <th>Timestamp</th>
                       <th>Action</th>
 
@@ -109,12 +106,9 @@ if (isset($_GET['RollBack_Transaction'])) {
                         <td><?php echo $cnt; ?></td>
                         <td><?php echo $row->tr_code; ?></a></td>
                         <td><?php echo $row->account_number; ?></td>
-                        <td><?php echo $row->name; ?></td>
                         <td><?php echo $alertClass; ?></td>
-                        <td>₹ <?php echo $row->transaction_amt; ?></td>
+                        <td>$ <?php echo $row->transaction_amt; ?></td>
                         <td><?php echo $row->client_name; ?></td>
-                        <td><?php echo $row->receiving_acc_no; ?></td>
-                        <td><?php echo $row->receiving_acc_name; ?></td>
                         <td><?php echo date("d-M-Y h:m:s ", strtotime($transTstamp)); ?></td>
                         <td>
                           <a class="badge badge-danger" href="pages_transactions_engine.php?RollBack_Transaction=<?php echo $row->tr_id; ?>">

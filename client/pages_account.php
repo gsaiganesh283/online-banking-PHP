@@ -133,7 +133,7 @@ if (isset($_POST['change_client_password'])) {
 
                                         <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
 
-                                        <p class="text-muted text-center">Branch@SRMISTBanking </p>
+                                        <p class="text-muted text-center">Client @iBanking </p>
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">

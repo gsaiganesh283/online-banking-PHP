@@ -7,7 +7,7 @@ $admin_id = $_SESSION['admin_id'];
 //register new account
 if (isset($_POST['create_staff_account'])) {
     //Register  Staff
-    $staff_name = $_POST['staff_name'];
+    $name = $_POST['name'];
     $staff_number = $_POST['staff_number'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
@@ -18,10 +18,10 @@ if (isset($_POST['create_staff_account'])) {
     move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "dist/img/" . $_FILES["profile_pic"]["name"]);
 
     //Insert Captured information to a database table
-    $query = "INSERT INTO iB_staff (staff_name, staff_number, phone, email, password, sex, profile_pic) VALUES (?,?,?,?,?,?,?)";
+    $query = "INSERT INTO iB_staff (name, staff_number, phone, email, password, sex, profile_pic) VALUES (?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssss', $staff_name, $staff_number, $phone, $email, $password, $sex, $profile_pic);
+    $rc = $stmt->bind_param('sssssss', $name, $staff_number, $phone, $email, $password, $sex, $profile_pic);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -84,7 +84,7 @@ if (isset($_POST['create_staff_account'])) {
                                         <div class="row">
                                             <div class=" col-md-6 form-group">
                                                 <label for="exampleInputEmail1">Staff Name</label>
-                                                <input type="text" name="staff_name" required class="form-control" id="exampleInputEmail1">
+                                                <input type="text" name="name" required class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class=" col-md-6 form-group">
                                                 <label for="exampleInputPassword1">Staff Number</label>

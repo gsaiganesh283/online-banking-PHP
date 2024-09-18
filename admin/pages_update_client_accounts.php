@@ -7,7 +7,7 @@ $admin_id = $_SESSION['admin_id'];
 //register new account
 if (isset($_POST['update_account'])) {
     //Client open account
-    $name = $_POST['name'];
+    $acc_name = $_POST['acc_name'];
     $account_number = $_POST['account_number'];
     $acc_type = $_POST['acc_type'];
     $acc_rates = $_POST['acc_rates'];
@@ -20,24 +20,12 @@ if (isset($_POST['update_account'])) {
     $client_number = $_POST['client_number'];
     $client_email  = $_POST['client_email'];
     $client_adr  = $_POST['client_adr'];
-    $email=$_POST['email'];
-    $contact=$_POST['contact'];
-    $dob=$_POST['dob'];
-    $gender=$_POST['gender'];
-    $aadhar=$_POST['aadhar'];
-    $pan_no=$_POST['pan_no'];
-    $address=$_POST['address'];
-    $signature=$_POST['signature'];
 
     //Insert Captured information to a database table
-    $query = "UPDATE  iB_bankAccounts  SET name=?, account_number=?, acc_type=?, acc_rates=?, acc_status=?, acc_amount=?, 
-    client_name=?, client_national_id=?, client_phone=?, client_number=?, 
-    client_email=?, client_adr=?, email=?, contact=?, dob=?, gender=?, aadhar=?, pan_no=?, address=?, signature=? WHERE account_id =?";
+    $query = "UPDATE  iB_bankAccounts  SET acc_name=?, account_number=?, acc_type=?, acc_rates=?, acc_status=?, acc_amount=?, client_name=?, client_national_id=?, client_phone=?, client_number=?, client_email=?, client_adr=? WHERE account_id =?";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('ssssssssssssssssssssi', $name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount,
-     $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr,
-    $email,$contact,$dob,$gender,$aadhar,$pan_no,$address,$signature, $account_id);
+    $rc = $stmt->bind_param('ssssssssssssi', $acc_name, $account_number, $acc_type, $acc_rates, $acc_status, $acc_amount,  $client_name, $client_national_id, $client_phone, $client_number, $client_email, $client_adr, $account_id);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -148,66 +136,14 @@ if (isset($_POST['update_account'])) {
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Account Name</label>
-                                                    <input type="text" name="name" value="<?php echo $row->name; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" name="acc_name" value="<?php echo $row->acc_name; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
-                                                
 
                                                 <div class=" col-md-6 form-group">
                                                     <label for="exampleInputEmail1">Account Number</label>
-                                                    <input type="text" readonly name="account_number" value="<?php echo $row->account_number; ?>" required class="form-control" id="exampleInputEmail1">
+                                                    <input type="text" name="account_number" value="<?php echo $row->account_number; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
-
-                                            <div class = "row">
-                                                
-                                                <!-- <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Account Name</label>
-                                                    <input type="text" name="name" value="<?php echo $row->name; ?>" required class="form-control" id="exampleInputEmail1">
-                                                </div> -->
-                                                                         <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Email</label>
-                                                                            <input type="text" name="email" value="<?php echo $row->email; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                 <div class=" col-md-6 form-group">
-                                                    <label for="exampleInputEmail1">Account Contact</label>
-                                                    <input type="text" name="contact" value="<?php echo $row->contact; ?>" required class="form-control" id="exampleInputEmail1">
-                                                </div>
-                                                                    </div>
-                                                                    <div class = "row">
-                                                                         <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Date of Birth</label>
-                                                                            <input type="text" readonly name="dob" value="<?php echo $row->dob; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                                        <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Gender</label>
-                                                                            <!-- <select class="form-control" name="gender">
-                                                                                <option>Select Gender</option>
-                                                                                <option>Female</option>
-                                                                                <option>Male</option>
-                                                                            </select> -->
-                                                                            <input type="text" readonly name="gender" value="<?php echo $row->gender; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class = "row">
-                                                                         <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Aadhar</label>
-                                                                            <input type="text" readonly name="aadhar" value="<?php echo $row->aadhar; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                                        <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Pan Number</label>
-                                                                            <input type="text" readonly name="pan_no" value="<?php echo $row->pan_no; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class = "row">
-                                                                         <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Address</label>
-                                                                            <input type="text" name="address" value="<?php echo $row->address; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                                        <div class=" col-md-6 form-group">
-                                                                            <label for="exampleInputEmail1">Account Signature</label>
-                                                                            <input type="text" name="signature" value="<?php echo $row->signature; ?>" required class="form-control" id="exampleInputEmail1">
-                                                                        </div>
-                                                                    </div>
 
                                             <div class="row">
                                                 <div class=" col-md-6 form-group">
@@ -243,14 +179,9 @@ if (isset($_POST['update_account'])) {
                                                     <label for="exampleInputEmail1">Account Amount</label>
                                                     <input type="text" name="acc_amount" value="0" readonly required class="form-control">
                                                 </div>
-                                                </div>
-
-                                                </div>                                                
 
                                             </div>
-                                            
                                         </div>
-                                        
                                         <!-- /.card-body -->
                                         <div class="card-footer">
                                             <button type="submit" name="update_account" class="btn btn-success">Update iBanking Account</button>

@@ -38,7 +38,7 @@ while ($auth = $res->fetch_object()) {
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Log In To Start Branch Session</p>
+          <p class="login-box-msg">Log In To Start Client Session</p>
 
           <form method="post">
             <div class="input-group mb-3">

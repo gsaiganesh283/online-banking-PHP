@@ -1,23 +1,21 @@
-
+**Log on to codeastro.com for more projects!***
 
 **Database Name: internetbanking**
 
-**Team**
-==>Durga Bhavani Y
-==>Pavan Kumar
-==>Saiganesh Raju G
+**Developed by Martin Mbithi**
 
-**Recommended PHP Version 8.2.12**
+**Recommended PHP Version 5, 7, 8**
 
 
 **Admin Login Details**
 
-Email	: gsaiganesh628@mail.com
-Password: 05dec2002
+Email	: admin@mail.com
+Password: codeastro.com
 
 
 **Staff Login Details**
 
-Email	: gsaiganesh628@mail.com
-Password: 05dec2002
+Email	: staff@mail.com
+Password: codeastro.com
+
 

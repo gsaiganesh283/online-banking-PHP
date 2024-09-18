@@ -46,7 +46,7 @@ $admin_id = $_SESSION['admin_id'];
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="pages_balance_enquiries.php">Finances</a></li>
                                     <li class="breadcrumb-item"><a href="pages_balance_enquiries.php">Balances</a></li>
-                                    <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
+                                    <li class="breadcrumb-item active"><?php echo $row->name; ?> Accs</li>
                                 </ol>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ $admin_id = $_SESSION['admin_id'];
 
                                                 <tr>
                                                     <td><?php echo $cnt; ?></td>
-                                                    <td><?php echo $row->name; ?></td>
+                                                    <td><?php echo $row->acc_name; ?></td>
                                                     <td><?php echo $row->account_number; ?></td>
                                                     <td><?php echo $row->acc_rates; ?>%</td>
                                                     <td><?php echo $row->acc_type; ?></td>
