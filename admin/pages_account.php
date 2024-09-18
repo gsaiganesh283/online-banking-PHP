@@ -209,37 +209,37 @@ if (isset($_POST['change_password'])) {
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Moblie Number</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->moblie_number; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->admin_moblie_number; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Data of Birth</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->dob; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->admin_dob; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Aadhra Number</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->aadhra_number; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->admin_aadhra_number; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">PAN Number</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->pan_number; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->admin_pan_number; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Passport Number</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->passport_number; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->admin_passport_number; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputName2" class="col-sm-2 col-form-label">Address</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->address; ?>" id="inputName2">
+                                                            <input type="text" class="form-control" required readonly name="number" value="<?php echo $row->admin_address; ?>" id="inputName2">
                                                         </div>
                                                     </div>
                                                     <!-- Additional fields omitted for brevity -->
