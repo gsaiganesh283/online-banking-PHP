@@ -72,7 +72,7 @@ if (isset($_GET['deleteBankAcc'])) {
                       <th>Acc Number</th>
                       <th>Rate</th>
                       <th>Acc Type</th>
-                      <th>Acc Owner</th>
+                      <th>Branch</th>
                       <th>Date Opened</th>
                       <th>Action</th>
                     </tr>
@@ -93,14 +93,14 @@ if (isset($_GET['deleteBankAcc'])) {
 
                       <tr>
                         <td><?php echo $cnt; ?></td>
-                        <td><?php echo $row->acc_name; ?></td>
+                        <td><?php echo $row->name; ?></td>
                         <td><?php echo $row->account_number; ?></td>
                         <td><?php echo $row->acc_rates; ?>%</td>
                         <td><?php echo $row->acc_type; ?></td>
                         <td><?php echo $row->client_name; ?></td>
                         <td><?php echo date("d-M-Y", strtotime($dateOpened)); ?></td>
                         <td>
-                          <a class="btn btn-success btn-sm" href="pages_update_client_accounts.php?account_id=<?php echo $row->account_id; ?>">
+                          <a class="btn btn-success btn-sm" href="pages_update_user_accounts.php?account_id=<?php echo $row->account_id; ?>">
                             <i class="fas fa-cogs"></i>
                             <!-- <i class="fas fa-briefcase"></i> -->
                             Manage

@@ -105,7 +105,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
-                   Clients
+                   Branch
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -113,13 +113,13 @@
                 <li class="nav-item">
                   <a href="pages_add_client.php" class="nav-link">
                     <i class="fas fa-user-plus nav-icon"></i>
-                    <p>Add Client</p>
+                    <p>Add Branch</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="pages_manage_clients.php" class="nav-link">
                     <i class="fas fa-user-cog nav-icon"></i>
-                    <p>Manage Clients</p>
+                    <p>Manage Branch</p>
                   </a>
                 </li>
               </ul>

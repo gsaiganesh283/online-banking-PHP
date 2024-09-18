@@ -27,7 +27,7 @@ if (isset($_GET['Clear_Notifications'])) {
     */
 
 //return total number of ibank clients
-$result = "SELECT count(*) FROM iB_clients";
+$result = "SELECT staff_branch FROM iB_staff where staff_id = $staff_id";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iBClients);
@@ -35,12 +35,12 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Staffs
-$result = "SELECT count(*) FROM iB_staff";
-$stmt = $mysqli->prepare($result);
-$stmt->execute();
-$stmt->bind_result($iBStaffs);
-$stmt->fetch();
-$stmt->close();
+// $result = "SELECT count(*) FROM iB_bankaccounts where staff_id=$staff_id";
+// $stmt = $mysqli->prepare($result);
+// $stmt->execute();
+// $stmt->bind_result($iB_Accs);
+// $stmt->fetch();
+// $stmt->close();
 
 //return total number of iBank Account Types
 $result = "SELECT count(*) FROM iB_Acc_types";
@@ -51,7 +51,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Accounts
-$result = "SELECT count(*) FROM iB_bankAccounts";
+$result = "SELECT count(*) FROM iB_bankAccounts where client_id = (select branch_id from iB_staff where staff_id = $staff_id)";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_Accs);
@@ -59,7 +59,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Deposits
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Deposit' and client_name = (select staff_branch from iB_staff where staff_id = $staff_id)";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_deposits);
@@ -67,7 +67,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of iBank Withdrawals
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Withdrawal' and client_name = (select staff_branch from iB_staff where staff_id = $staff_id)";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_withdrawal);
@@ -77,7 +77,7 @@ $stmt->close();
 
 
 //return total number of iBank Transfers
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Transfer' ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions WHERE  tr_type = 'Transfer' and client_name = (select staff_branch from iB_staff where staff_id = $staff_id) ";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($iB_Transfers);
@@ -85,7 +85,7 @@ $stmt->fetch();
 $stmt->close();
 
 //return total number of  iBank initial cash->balances
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions where client_name = (select staff_branch from iB_staff where staff_id = $staff_id)";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($acc_amt);
@@ -96,7 +96,7 @@ $TotalBalInAccount = ($iB_deposits)  - (($iB_withdrawal) + ($iB_Transfers));
 
 
 //ibank money in the wallet
-$result = "SELECT SUM(transaction_amt) FROM iB_Transactions ";
+$result = "SELECT SUM(transaction_amt) FROM iB_Transactions where client_name = (select staff_branch from iB_staff where staff_id = $staff_id)";
 $stmt = $mysqli->prepare($result);
 $stmt->execute();
 $stmt->bind_result($new_amt);
@@ -152,7 +152,7 @@ $stmt->close();
               <div class="info-box">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text"> Clients</span>
+                  <span class="info-box-text">Branch</span>
                   <span class="info-box-number">
                     <?php echo $iBClients; ?>
                   </span>
@@ -238,7 +238,7 @@ $stmt->close();
                 <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-money-bill-alt"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Wallet Balance</span>
-                  <span class="info-box-number">$ <?php echo $TotalBalInAccount; ?></span>
+                  <span class="info-box-number">$ <?php echo $new_amt; ?></span>
                 </div>
               </div>
             </div>

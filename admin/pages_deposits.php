@@ -47,18 +47,18 @@ $admin_id = $_SESSION['admin_id'];
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Select on any account to deposit money</h3>
+                <h3 class="card-title">Search for any account to deposit money</h3>
               </div>
               <div class="card-body">
                 <table id="example1" class="table table-hover table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>S.NO</th>
                       <th>Name</th>
                       <th>Account No.</th>
                       <th>Rate</th>
                       <th>Acc. Type</th>
-                      <th>Acc. Owner</th>
+                      <th>Branch</th>
                       <th>Action</th>
                     </tr>
                   </thead><!-- Log on to codeastro.com for more projects! -->
@@ -78,7 +78,7 @@ $admin_id = $_SESSION['admin_id'];
 
                       <tr>
                         <td><?php echo $cnt; ?></td>
-                        <td><?php echo $row->acc_name; ?></td>
+                        <td><?php echo $row->name; ?></td>
                         <td><?php echo $row->account_number; ?></td>
                         <td><?php echo $row->acc_rates; ?>%</td>
                         <td><?php echo $row->acc_type; ?></td>
@@ -145,5 +145,4 @@ $admin_id = $_SESSION['admin_id'];
     });
   </script>
 </body>
-
 </html>

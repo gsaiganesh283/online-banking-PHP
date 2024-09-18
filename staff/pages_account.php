@@ -7,21 +7,21 @@ $staff_id = $_SESSION['staff_id'];
 //update logged in user account
 if (isset($_POST['update_staff_account'])) {
     //Register  Staff
-    $name = $_POST['name'];
+    $staff_name = $_POST['staff_name'];
     $staff_id = $_SESSION['staff_id'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     //$password = sha1(md5($_POST['password']));
     $sex  = $_POST['sex'];
 
-    $profile_pic  = $_FILES["profile_pic"]["name"];
-    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../admin/dist/img/" . $_FILES["profile_pic"]["name"]);
+    $profile_pic  = $_FILES["profile_pic"]["staff_name"];
+    move_uploaded_file($_FILES["profile_pic"]["tmp_name"], "../staff/dist/img/" . $_FILES["profile_pic"]["name"]);
 
     //Insert Captured information to a database table
-    $query = "UPDATE iB_staff SET name=?, phone=?, email=?, sex=?, profile_pic=? WHERE staff_id=?";
+    $query = "UPDATE iB_staff SET staff_name=?, phone=?, email=?, sex=?, profile_pic=? WHERE staff_id=?";
     $stmt = $mysqli->prepare($query);
     //bind paramaters
-    $rc = $stmt->bind_param('sssssi', $name, $phone, $email, $sex, $profile_pic, $staff_id);
+    $rc = $stmt->bind_param('sssssi', $staff_name, $phone, $email, $sex, $profile_pic, $staff_id);
     $stmt->execute();
 
     //declare a varible which will be passed to alert function
@@ -82,7 +82,7 @@ if (isset($_POST['change_staff_password'])) {
                     $profile_picture = "
 
                         <img class='img-fluid'
-                        src='../admin/dist/img/user_icon.png'
+                        src='../staff/dist/img/user_icon.png'
                         alt='User profile picture'>
 
                         ";
@@ -90,7 +90,7 @@ if (isset($_POST['change_staff_password'])) {
                     $profile_picture = "
 
                         <img class=' img-fluid'
-                        src='../admin/dist/img/$row->profile_pic'
+                        src='../staff/dist/img/$row->profile_pic'
                         alt='User profile picture'>
 
                         ";
@@ -102,14 +102,14 @@ if (isset($_POST['change_staff_password'])) {
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1><?php echo $row->name; ?> Profile</h1>
+                                <h1><?php echo $row->staff_name; ?> Profile</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="pages_manage.php">iBanking Staffs</a></li>
                                     <li class="breadcrumb-item"><a href="pages_manage.php">Manage</a></li>
-                                    <li class="breadcrumb-item active"><?php echo $row->name; ?></li>
+                                    <li class="breadcrumb-item active"><?php echo $row->staff_name; ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ if (isset($_POST['change_staff_password'])) {
                                             <?php echo $profile_picture; ?>
                                         </div>
 
-                                        <h3 class="profile-username text-center"><?php echo $row->name; ?></h3>
+                                        <h3 class="profile-username text-center"><?php echo $row->staff_name; ?></h3>
 
                                         <p class="text-muted text-center">Staff @iBanking </p>
 
@@ -211,7 +211,7 @@ if (isset($_POST['change_staff_password'])) {
                                                     <div class="form-group row">
                                                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" name="name" required class="form-control" value="<?php echo $row->name; ?>" id="inputName">
+                                                            <input type="text" name="name" required class="form-control" value="<?php echo $row->staff_name; ?>" id="inputName">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">

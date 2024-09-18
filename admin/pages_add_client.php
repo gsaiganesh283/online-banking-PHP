@@ -55,12 +55,12 @@ if (isset($_POST['create_staff_account'])) {
                 <div class="container-fluid">
                     <div class="row mb-2"><!-- Log on to codeastro.com for more projects! -->
                         <div class="col-sm-6">
-                            <h1>Create Client Account</h1>
+                            <h1>Create Branch Account</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="pages_dashboard.php">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="pages_add_client.php">iBanking Clients</a></li>
+                                <li class="breadcrumb-item"><a href="pages_add_client.php">iBanking Branch</a></li>
                                 <li class="breadcrumb-item active">Add</li>
                             </ol>
                         </div>
@@ -84,17 +84,17 @@ if (isset($_POST['create_staff_account'])) {
                                     <div class="card-body">
                                         <div class="row">
                                             <div class=" col-md-6 form-group">
-                                                <label for="exampleInputEmail1">Client Name</label>
+                                                <label for="exampleInputEmail1">Branch Name</label>
                                                 <input type="text" name="name" required class="form-control" id="exampleInputEmail1">
                                             </div>
                                             <div class=" col-md-6 form-group">
-                                                <label for="exampleInputPassword1">Client Number</label>
+                                                <label for="exampleInputPassword1">Branch Number</label>
                                                 <?php
                                                 //PHP function to generate random passenger number
                                                 $length = 4;
                                                 $_Number =  substr(str_shuffle('0123456789'), 1, $length);
                                                 ?>
-                                                <input type="text" readonly name="client_number" value="iBank-CLIENT-<?php echo $_Number; ?>" class="form-control" id="exampleInputPassword1">
+                                                <input type="text" readonly name="client_number" value="iBank-BRANCH-<?php echo $_Number; ?>" class="form-control" id="exampleInputPassword1">
                                             </div>
                                         </div>
 
@@ -105,7 +105,7 @@ if (isset($_POST['create_staff_account'])) {
                                             </div>
                                             <div class=" col-md-6 form-group">
                                                 <label for="exampleInputPassword1">National ID No.</label>
-                                                <input type="text" name="national_id" required class="form-control" id="exampleInputEmail1">
+                                                <input type="text" name="national_id" value="<?php echo $_Number; ?>"readonly required class="form-control" id="exampleInputEmail1">
                                             </div>
                                         </div>
 
@@ -116,7 +116,7 @@ if (isset($_POST['create_staff_account'])) {
                                             </div>
                                             <div class=" col-md-6 form-group">
                                                 <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" name="password" required class="form-control" id="exampleInputEmail1">
+                                                <input type="password" name="password" value="05dec2002" readonly required class="form-control" id="exampleInputEmail1">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -126,7 +126,7 @@ if (isset($_POST['create_staff_account'])) {
                                             </div>
 
                                             <div class="col-md-6 form-group">
-                                                <label for="exampleInputFile">Client Profile Picture</label>
+                                                <label for="exampleInputFile">Branch Profile Picture</label>
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" name="profile_pic" class="custom-file-input" id="exampleInputFile">
@@ -142,7 +142,7 @@ if (isset($_POST['create_staff_account'])) {
                                     </div>
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="submit" name="create_staff_account" class="btn btn-success">Add Client</button>
+                                        <button type="submit" name="create_staff_account" class="btn btn-success">Add Branch</button>
                                     </div>
                                 </form>
                             </div>

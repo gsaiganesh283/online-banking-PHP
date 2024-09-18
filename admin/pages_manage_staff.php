@@ -90,7 +90,7 @@ if (isset($_GET['fireStaff'])) {
 
                       <tr>
                         <td><?php echo $cnt; ?></td>
-                        <td><?php echo $row->name; ?></td>
+                        <td><?php echo $row->staff_name; ?></td>
                         <td><?php echo $row->staff_number; ?></td>
                         <td><?php echo $row->phone; ?></td>
                         <td><?php echo $row->email; ?></td>

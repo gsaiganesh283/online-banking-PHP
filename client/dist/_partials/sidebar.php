@@ -69,7 +69,7 @@
               <a href="pages_account.php" class="nav-link">
                 <i class="nav-icon fas fa-user-tie"></i>
                 <p>
-                  Account
+                  Branch Profile
                 </p>
               </a>
             </li>
@@ -80,7 +80,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-briefcase"></i>
                 <p>
-                  iBank Accounts
+                  Accounts
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -95,6 +95,12 @@
                   <a href="pages_manage_acc_openings.php" class="nav-link">
                     <i class="fas fa-cog nav-icon"></i>
                     <p>My iBank Accounts</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages_open_acc.php" class="nav-link">
+                    <i class="fas fa-lock-open nav-icon"></i>
+                    <p>Account Verification</p>
                   </a>
                 </li>
               </ul>

@@ -5,6 +5,21 @@ include('conf/checklogin.php');
 check_login();
 $client_id = $_SESSION['client_id'];
 
+//clear notifications and alert user that they are cleared
+if (isset($_GET['Clear_Notifications'])) {
+  $id = intval($_GET['Clear_Notifications']);
+  $adn = "DELETE FROM  iB_notifications  WHERE notification_id = ?";
+  $stmt = $mysqli->prepare($adn);
+  $stmt->bind_param('i', $id);
+  $stmt->execute();
+  $stmt->close();
+
+  if ($stmt) {
+    $info = "Notifications Cleared";
+  } else {
+    $err = "Try Again Later";
+  }
+}
 /*
     get all dashboard analytics 
     and numeric values from distinct 
@@ -123,7 +138,7 @@ $stmt->close();
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Client Dashboard</h1>
+              <h1 class="m-0 text-dark">Branch Dashboard</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">

@@ -39,7 +39,10 @@ while ($sys = $res->fetch_object()) {
                             <a class="nav-link" target="_blank" href="staff/pages_staff_index.php">Staff Portal</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" target="_blank" href="client/pages_client_index.php">Client Portal</a>
+                            <a class="nav-link" target="_blank" href="client/pages_client_index.php">Branch Portal</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" target="_blank" href="user1/pages_user_index.php">User Portal</a>
                         </li>
                     </ul>
                     <a class="btn btn-danger" href="client/pages_client_signup.php" target="_blank">Join Us</a>
