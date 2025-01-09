@@ -85,7 +85,7 @@ if (isset($_GET['RollBack_Transaction'])) {
                   <tbody>
                     <?php
                     //Get latest transactions 
-                    $ret = "SELECT * FROM `iB_Transactions` ORDER BY `iB_Transactions`.`created_at` DESC ";
+                    $ret = "SELECT * FROM `iB_Transactions`ORDER BY `iB_Transactions`.`created_at` DESC ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
