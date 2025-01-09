@@ -19,7 +19,7 @@ if (isset($_POST['withdrawal'])) {
     $client_name  = $_POST['client_name'];
     $client_national_id  = $_POST['client_national_id'];
     $transaction_amt = $_POST['transaction_amt'];
-    $client_phone = $_POST['client_phone'];
+    // $client_phone = $_POST['client_phone'];
     //$acc_new_amt = $_POST['acc_new_amt'];
     //$notification_details = $_POST['notification_details'];
     $notification_details = "$client_name Has Withdrawn $ $transaction_amt From Bank Account $account_number";
