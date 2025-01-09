@@ -90,7 +90,8 @@ $admin_id = $_SESSION['admin_id'];
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1><?php echo $row->client_name; ?> iBanking Account Balance</h1>
+                                <h1><?php echo $row->client_name; ?> </h1>
+                                <h2>iBanking Account Balance</h2>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -124,7 +125,7 @@ $admin_id = $_SESSION['admin_id'];
                                     <!-- info row -->
                                     <div class="row invoice-info">
                                         <div class="col-sm-6 invoice-col">
-                                            Account Holder
+                                            Account Branch
                                             <address>
                                                 <strong><?php echo $row->client_name; ?></strong><br>
                                                 <?php echo $row->client_number; ?><br>
@@ -138,9 +139,9 @@ $admin_id = $_SESSION['admin_id'];
                                             Account Details
                                             <address>
                                                 <strong><?php echo $row->name; ?></strong><br>
-                                                Acc No: <?php echo $row->account_number; ?><br>
-                                                Acc Type: <?php echo $row->acc_type; ?><br>
-                                                Acc Rates: <?php echo $row->acc_rates; ?> %
+                                                <strong>Account No: </strong> <?php echo $row->account_number; ?><br>
+                                                <strong>Type: </strong><?php echo $row->acc_type; ?><br>
+                                                <strong>Rates: </strong><?php echo $row->acc_rates; ?> %
                                             </address>
                                         </div>
 
@@ -162,10 +163,10 @@ $admin_id = $_SESSION['admin_id'];
                                                 <tbody>
 
                                                     <tr>
-                                                        <td>$ <?php echo $deposit; ?></td>
-                                                        <td>$ <?php echo $withdrawal; ?></td>
-                                                        <td>$ <?php echo $Transfer; ?></td>
-                                                        <td>$ <?php echo $money_in; ?></td>
+                                                        <td>₹ <?php echo $deposit; ?></td>
+                                                        <td>₹ <?php echo $withdrawal; ?></td>
+                                                        <td>₹ <?php echo $Transfer; ?></td>
+                                                        <td>₹ <?php echo $money_in; ?></td>
                                                     </tr>
 
                                                 </tbody>
@@ -192,23 +193,23 @@ $admin_id = $_SESSION['admin_id'];
                                                 <table class="table table-bordered table-hover">
                                                     <tr>
                                                         <th style="width:50%">Funds In:</th>
-                                                        <td>$ <?php echo $deposit; ?></td>
+                                                        <td>₹ <?php echo $deposit; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Funds Out</th>
-                                                        <td>$ <?php echo $money_out; ?></td>
+                                                        <td>₹ <?php echo $money_out; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Sub Total:</th>
-                                                        <td>$ <?php echo $money_in; ?></td>
+                                                        <td>₹ <?php echo $money_in; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Banking Intrest:</th>
-                                                        <td>$ <?php echo $rate_amt; ?></td>
+                                                        <td>₹ <?php echo $rate_amt; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <th>Total Balance:</th>
-                                                        <td>$ <?php echo $totalMoney; ?></td>
+                                                        <td>₹ <?php echo $totalMoney; ?></td>
                                                     </tr>
                                                 </table>
                                             </div>
