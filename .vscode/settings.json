@@ -15,5 +15,6 @@
             "connectionTimeout": 1000,
             "askForPassword": true
         }
-    ]
+    ],
+    "php.version": "8.1"
 }
