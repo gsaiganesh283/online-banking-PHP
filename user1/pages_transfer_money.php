@@ -58,7 +58,14 @@ if (isset($_POST['deposit'])) {
         $notification_stmt = $mysqli->prepare($notification);
 
         //bind paramaters
-        $rc = $stmt->bind_param('sssssssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $client_phone, $receiving_acc_no, $receiving_acc_name, $receiving_acc_holder);
+        $rc = $stmt->bind_param('sssssssssssssss', $tr_code, $account_id, $name, $account_number,
+         $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, 
+         $client_phone, $receiving_acc_no, $receiving_acc_name, $receiving_acc_holder);
+
+        //  $rc = $stmt->bind_param('ssssssssssssss', $tr_code, $account_id, $name, $account_number,
+        //  $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, 
+        //  $client_phone, $receiving_acc_no, $receiving_acc_name);
+
         $rc = $notification_stmt->bind_param('s', $notification_details);
 
         $stmt->execute();
@@ -193,7 +200,7 @@ if (isset($_POST['deposit'])) {
                                                     <input type="text" readonly value="<?php echo $amt; ?>" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                                 <div class=" col-md-4 form-group">
-                                                    <label for="exampleInputPassword1">Amount Transfered($)</label>
+                                                    <label for="exampleInputPassword1">Amount Transfered(₹)</label>
                                                     <input type="text" name="transaction_amt" required class="form-control" id="exampleInputEmail1">
                                                 </div>
                                             </div>
@@ -201,33 +208,16 @@ if (isset($_POST['deposit'])) {
                                             <div class="row">
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Receiving Account Number</label>
-                                                    <select name="receiving_acc_no" onChange="getiBankAccs(this.value);" required class="form-control">
-                                                    <!-- <input type="text" name="receiving_acc_no" required class="form-control" placeholder="Receiving Account Number"> -->
-                                                        <option>Select Receiving Account</option>
-                                                        <?php
-                                                        //fetch all iB_Accs
-                                                        $ret = "SELECT * FROM  iB_bankAccounts ";
-                                                        $stmt = $mysqli->prepare($ret);
-                                                        $stmt->execute(); //ok
-                                                        $res = $stmt->get_result();
-                                                        $cnt = 1;
-                                                        while ($row = $res->fetch_object()) {
-
-                                                        ?>
-                                                            <option><?php echo $row->account_number; ?></option>
-
-                                                        <?php } ?>
-
-                                                    </select>
+                                                    <input type="text" name="receiving_acc_no" required class="form-control" placeholder="Enter Account Number">
                                                 </div>
                                                 <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Receiving Account Name</label>
-                                                    <input type="text" name="receiving_acc_name" required class="form-control" id="ReceivingAcc">
+                                                    <input type="text" name="receiving_acc_name" value="" required class="form-control" id="ReceivingAcc">
                                                 </div>
-                                                <div class=" col-md-4 form-group">
+                                                <!-- <div class=" col-md-4 form-group">
                                                     <label for="exampleInputPassword1">Receiving Account Holder</label>
                                                     <input type="text" name="receiving_acc_holder" required class="form-control" id="AccountHolder">
-                                                </div>
+                                                </div> -->
 
                                                 <div class=" col-md-4 form-group" style="display:none">
                                                     <label for="exampleInputPassword1">Transaction Type</label>
