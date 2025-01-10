@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 02, 2024 at 07:22 PM
+-- Host: localhost:3306:3307
+-- Generation Time: Jan 10, 2025 at 12:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,12 +62,12 @@ CREATE TABLE `ib_acc_types` (
 --
 
 INSERT INTO `ib_acc_types` (`acctype_id`, `name`, `description`, `rate`, `code`) VALUES
-(1, 'Savings', '<p>Savings accounts&nbsp;are typically the first official bank account anybody opens. Children may open an account with a parent to begin a pattern of saving. Teenagers open accounts to stash cash earned&nbsp;from a first job&nbsp;or household chores.</p><p>Savings accounts are an excellent place to park&nbsp;emergency cash. Opening a savings account also marks the beginning of your relationship with a financial institution. For example, when joining a credit union, your &ldquo;share&rdquo; or savings account establishes your membership.</p>', '20', 'ACC-CAT-4EZFO'),
-(2, ' Retirement', '<p>Retirement accounts&nbsp;offer&nbsp;tax advantages. In very general terms, you get to&nbsp;avoid paying income tax on interest&nbsp;you earn from a savings account or CD each year. But you may have to pay taxes on those earnings at a later date. Still, keeping your money sheltered from taxes may help you over the long term. Most banks offer IRAs (both&nbsp;Traditional IRAs&nbsp;and&nbsp;Roth IRAs), and they may also provide&nbsp;retirement accounts for small businesses</p>', '10', 'ACC-CAT-1QYDV'),
+(1, 'Savings', '<p>Savings accounts&nbsp;are typically the first official bank account anybody opens. Children may open an account with a parent to begin a pattern of saving. Teenagers open accounts to stash cash earned&nbsp;from a first job&nbsp;or household chores.</p><p>Savings accounts are an excellent place to park&nbsp;emergency cash. Opening a savings account also marks the beginning of your relationship with a financial institution. For example, when joining a credit union, your &ldquo;share&rdquo; or savings account establishes your membership.</p>', '3', 'ACC-CAT-4EZFO'),
+(2, ' Retirement', '<p>Retirement accounts&nbsp;offer&nbsp;tax advantages. In very general terms, you get to&nbsp;avoid paying income tax on interest&nbsp;you earn from a savings account or CD each year. But you may have to pay taxes on those earnings at a later date. Still, keeping your money sheltered from taxes may help you over the long term. Most banks offer IRAs (both&nbsp;Traditional IRAs&nbsp;and&nbsp;Roth IRAs), and they may also provide&nbsp;retirement accounts for small businesses</p>', '8', 'ACC-CAT-1QYDV'),
 (4, 'Recurring deposit', '<p><strong>Recurring deposit account or RD account</strong> is opened by those who want to save certain amount of money regularly for a certain period of time and earn a higher interest rate.&nbsp;In RD&nbsp;account a&nbsp;fixed amount is deposited&nbsp;every month for a specified period and the total amount is repaid with interest at the end of the particular fixed period.&nbsp;</p><p>The period of deposit is minimum six months and maximum ten years.&nbsp;The interest rates vary&nbsp;for different plans based on the amount one saves and the period of time and also on banks. No withdrawals are allowed from the RD account. However, the bank may allow to close the account before the maturity period.</p><p>These accounts can be opened in single or joint names. Banks are also providing the Nomination facility to the RD account holders.&nbsp;</p>', '15', 'ACC-CAT-VBQLE'),
-(5, 'Fixed Deposit Account', '<p>In <strong>Fixed Deposit Account</strong> (also known as <strong>FD Account</strong>), a particular sum of money is deposited in a bank for specific&nbsp;period of time. It&rsquo;s one time deposit and one time take away (withdraw) account.&nbsp;The money deposited in this account can not be withdrawn before the expiry of period.&nbsp;</p><p>However, in case of need,&nbsp; the depositor can ask for closing the fixed deposit prematurely by paying a penalty. The penalty amount varies with banks.</p><p>A high interest rate is paid on fixed deposits. The rate of interest paid for fixed deposit vary according to amount, period and also from bank to bank.</p>', '40', 'ACC-CAT-A86GO'),
-(7, 'Current account', '<p><strong>Current account</strong> is mainly for business persons, firms, companies, public enterprises etc and are never used for the purpose of investment or savings.These deposits are the most liquid deposits and there are no limits for number of transactions or the amount of transactions in a day. While, there is no interest paid on amount held in the account, banks charges certain &nbsp;service charges, on such accounts. The current accounts do not have any fixed maturity as these are on continuous basis accounts.</p>', '20', 'ACC-CAT-4O8QW'),
-(13, 'Education', '', '77', 'ACC-CAT-H27Z1');
+(5, 'Fixed Deposit Account', '<p>In <strong>Fixed Deposit Account</strong> (also known as <strong>FD Account</strong>), a particular sum of money is deposited in a bank for specific&nbsp;period of time. It&rsquo;s one time deposit and one time take away (withdraw) account.&nbsp;The money deposited in this account can not be withdrawn before the expiry of period.&nbsp;</p><p>However, in case of need,&nbsp; the depositor can ask for closing the fixed deposit prematurely by paying a penalty. The penalty amount varies with banks.</p><p>A high interest rate is paid on fixed deposits. The rate of interest paid for fixed deposit vary according to amount, period and also from bank to bank.</p>', '10', 'ACC-CAT-A86GO'),
+(7, 'Current account', '<p><strong>Current account</strong> is mainly for business persons, firms, companies, public enterprises etc and are never used for the purpose of investment or savings.These deposits are the most liquid deposits and there are no limits for number of transactions or the amount of transactions in a day. While, there is no interest paid on amount held in the account, banks charges certain &nbsp;service charges, on such accounts. The current accounts do not have any fixed maturity as these are on continuous basis accounts.</p>', '7.5', 'ACC-CAT-4O8QW'),
+(13, 'Education', '', '4.75', 'ACC-CAT-H27Z1');
 
 -- --------------------------------------------------------
 
@@ -80,6 +80,12 @@ CREATE TABLE `ib_admin` (
   `name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `number` varchar(200) NOT NULL,
+  `admin_moblie_number` varchar(10) NOT NULL,
+  `admin_dob` date DEFAULT NULL,
+  `admin_aadhra_number` varchar(12) NOT NULL,
+  `admin_pan_number` varchar(10) NOT NULL,
+  `admin_passport_number` varchar(10) NOT NULL,
+  `admin_address` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `profile_pic` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -88,8 +94,8 @@ CREATE TABLE `ib_admin` (
 -- Dumping data for table `ib_admin`
 --
 
-INSERT INTO `ib_admin` (`admin_id`, `name`, `email`, `number`, `password`, `profile_pic`) VALUES
-(2, 'Saiganesh Raju Gottam', 'gsaiganesh628@gmail.com', 'iBank-ADM-0516', '76555815804f5af8a8fa7afa1ea32b3047801d09', '');
+INSERT INTO `ib_admin` (`admin_id`, `name`, `email`, `number`, `admin_moblie_number`, `admin_dob`, `admin_aadhra_number`, `admin_pan_number`, `admin_passport_number`, `admin_address`, `password`, `profile_pic`) VALUES
+(2, 'Saiganesh Raju Gottam', 'gsaiganesh628@gmail.com', 'iBank-ADM-0516', '6281718680', '2002-12-05', '696868018088', 'FAFPR6122A', 'NA', '3-14, BC Colony, Yerraguntlepalli, Pileru, Annamyya Dist, Andhra Pradhesh, 517214.', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'profile_2.png');
 
 -- --------------------------------------------------------
 
@@ -132,9 +138,9 @@ CREATE TABLE `ib_bankaccounts` (
 
 INSERT INTO `ib_bankaccounts` (`account_id`, `name`, `account_number`, `gender`, `acc_type`, `acc_rates`, `acc_status`, `acc_amount`, `client_id`, `client_name`, `client_national_id`, `client_phone`, `client_number`, `client_email`, `client_adr`, `email`, `contact`, `dob`, `aadhar`, `pan_no`, `address`, `signature`, `password`, `created_at`, `created_by`, `profile_pic`) VALUES
 (47, 'Saiganesh Raju Gottam', '893450712', 'Male', 'Fixed Deposit Account ', '40', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'saiganesh@gmail.com', '6281718680', '2002-12-05', '696868018088', 'FAFPR6122A', 'Pileru', 'Saiganesh Raju Gottam', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:26:15.995656', 'Admin', ''),
-(50, 'Durga Bhavani Y', '937468501', 'Female', 'Current account ', '20', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'bhavani@gmail.com', '9390475897', '2003-06-28', '123456789012', 'ABCDE1234F', 'Tanaku', 'Durga Bhavani Y', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:26:28.044639', 'STAFF', ''),
+(50, 'Durga Bhavani Y', '937468501', 'Female', 'Savings ', '20', 'Active', '0', '22', 'SRM NAGAR', '6182', '9390475897', 'iBank-BRANCH-6182', 'yy2819@srmist.edu.in', 'SRM Nagar, Kattankulathur', 'bhavani@gmail.com', '9390475897', '2003-06-28', '123456789012', 'ABCDE1234F', 'Tanaku', 'Durga Bhavani Y', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2025-01-09 13:53:42.180431', 'STAFF', ''),
 (51, 'Mummadi Venkata Pavan Kumar', '714956823', 'Male', 'Recurring deposit ', '15', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'pavan@gmail.com', '1234567890', '2004-01-13', '123456789012', 'ABCDE1234F', 'Kadapa', 'Mummadi Venkata Pavan Kumar', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:26:05.256193', 'CLIENT', ''),
-(52, 'Shaik Mohammed Fahad', '329761084', 'Male', 'Education ', '77', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'fahad@gmail.com', '1234567890', '2003-01-06', '123456789012', 'ABCDE1234F', 'Pileru', 'Shaik Mohammed Fahad', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-06-28 08:28:01.994960', 'SELF - ONLINE', ''),
+(52, 'Shaik Mohammed Fahad', '329761084', 'Male', 'Current account ', '', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'fahad@gmail.com', '1234567890', '2003-01-06', '123456789012', 'ABCDE1234F', 'Pileru', 'Shaik Mohammed Fahad', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2025-01-10 06:12:51.102189', 'SELF - ONLINE', ''),
 (53, 'Cheruvu Chethan', '241795306', 'Male', 'Education ', '77', 'Active', '0', '21', 'POTHERI', '9857', '6281718680', 'iBank-BRANCH-9857', 'gsaiganesh628@gmail.com', 'Potheri', 'cc2443@srmist.edu.in', '9030568531', '0000-00-00', '123456789012', 'ABCDE1234F', 'sodam', 'Chethan', '76555815804f5af8a8fa7afa1ea32b3047801d09', '2024-07-21 04:29:17.512382', 'ADMIN', '');
 
 -- --------------------------------------------------------
@@ -161,7 +167,8 @@ CREATE TABLE `ib_clients` (
 
 INSERT INTO `ib_clients` (`client_id`, `name`, `national_id`, `phone`, `address`, `email`, `password`, `profile_pic`, `client_number`) VALUES
 (21, 'POTHERI', '9857', '6281718680', 'Potheri', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-BRANCH-9857'),
-(22, 'SRM NAGAR', '6182', '9390475897', 'SRM Nagar, Kattankulathur', 'yy2819@srmist.edu.in', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-BRANCH-6182');
+(22, 'SRM NAGAR', '6182', '9390475897', 'SRM Nagar, Kattankulathur', 'yy2819@srmist.edu.in', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-BRANCH-6182'),
+(23, 'PILERU', '9410', '9390475897', 'Pileru', 'pileru@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', '', 'iBank-BRANCH-9410');
 
 -- --------------------------------------------------------
 
@@ -209,7 +216,15 @@ INSERT INTO `ib_notifications` (`notification_id`, `notification_details`, `crea
 (58, 'POTHERI Has Deposited $ 250000 To Bank Account 714956823', '2024-07-21 06:34:57.091518'),
 (59, 'SRM NAGAR Has Deposited $ 50000 To Bank Account 893450712', '2024-07-21 06:35:18.882556'),
 (60, 'SRM NAGAR Has Deposited $ 50000 To Bank Account 893450712', '2024-07-21 10:17:33.277299'),
-(61, 'SRM NAGAR Has Withdrawn $ 20000 From Bank Account 893450712', '2024-07-21 10:18:00.661029');
+(61, 'SRM NAGAR Has Withdrawn $ 20000 From Bank Account 893450712', '2024-07-21 10:18:00.661029'),
+(62, 'SRM NAGAR Has Deposited $ 100 To Bank Account 893450712', '2024-09-12 16:00:25.504461'),
+(63, 'SRM NAGAR Has Deposited $ 20000 To Bank Account 937468501', '2024-09-12 16:16:16.474869'),
+(64, 'SRM NAGAR Has Transfered $ 200 From Bank Account 937468501 To Bank Account 714956823', '2024-09-12 16:16:38.022055'),
+(65, 'SRM NAGAR Has Transfered $ 20 From Bank Account 893450712 To Bank Account 937468501', '2025-01-08 13:32:51.795670'),
+(66, 'SRM NAGAR Has Transfered $ 20 From Bank Account 893450712 To Bank Account 937468501', '2025-01-08 13:35:11.731465'),
+(67, 'SRM NAGAR Has Withdrawn $ 5 From Bank Account 893450712', '2025-01-09 13:46:42.413366'),
+(68, 'POTHERI Has Deposited $ 20000 To Bank Account 714956823', '2025-01-10 05:22:33.787643'),
+(69, 'SRM NAGAR Has Deposited $ 10000 To Bank Account 893450712', '2025-01-10 05:52:29.512724');
 
 -- --------------------------------------------------------
 
@@ -236,7 +251,7 @@ CREATE TABLE `ib_staff` (
 
 INSERT INTO `ib_staff` (`staff_id`, `branch_id`, `staff_branch`, `staff_name`, `staff_number`, `phone`, `email`, `password`, `sex`, `profile_pic`) VALUES
 (6, 21, 'POTHERI', 'Saiganesh Raju Gottam', 'iBank-STAFF-0165', '6281718680', 'gsaiganesh628@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Male', 'my_photo.jpg'),
-(8, 22, 'SRM NAGAR', 'Fahad Shaik', 'iBank-STAFF-2568', '9030475897', 'fahad@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Male', '');
+(9, 0, '', 'Sailaja Raju Gottam', 'iBank-STAFF-8241', '9347112419', 'sailaja_staff@gmail.com', '76555815804f5af8a8fa7afa1ea32b3047801d09', 'Female', '');
 
 -- --------------------------------------------------------
 
@@ -290,12 +305,14 @@ CREATE TABLE `ib_transactions` (
 --
 
 INSERT INTO `ib_transactions` (`tr_id`, `tr_code`, `account_id`, `name`, `account_number`, `acc_type`, `acc_amount`, `tr_type`, `tr_status`, `client_id`, `client_name`, `client_national_id`, `transaction_amt`, `client_phone`, `receiving_acc_no`, `created_at`, `receiving_acc_name`, `receiving_acc_holder`) VALUES
-(78, 'JM0HLv3V64ERAT8sDfaF', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Deposit', 'Success ', '21', 'POTHERI', '9857', '200000', '', '', '2024-06-28 08:04:01.862774', '', ''),
-(79, 'cUEpaOmsXJwvt4MuWPGr', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Transfer', 'Success ', '21', 'POTHERI', '9857', '20000', '6281718680', '893450712', '2024-06-28 08:06:39.119337', 'Saiganesh Raju Gottam', 'SRM NAGAR'),
-(80, 'yrlEaUKY8GTfNS0JLZn6', '52', 'Shaik Mohammed Fahad', '329761084', 'Savings ', '', 'Withdrawal', 'Success ', '21', 'POTHERI', '9857', '2000', '<br /><b>Warning</b>:  Undefined property: stdClass::$phone in <b>C:\\Users\\gsaig\\OneDrive\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_withdraw_money.php</b> on line <b>166</b><br />', '', '2024-06-28 08:25:10.570354', '', ''),
-(81, 'tQhqsxW3FE9lk18dXU6A', '51', 'Mummadi Venkata Pavan Kumar', '714956823', 'Recurring deposit ', '', 'Deposit', 'Success ', '21', 'POTHERI', '9857', '250000', '', '', '2024-07-21 06:34:57.082131', '', ''),
-(82, 'eqzFT9XcHLKaI3tGvRdV', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '50000', '', '', '2024-07-21 06:35:18.868293', '', ''),
-(83, 'eqzFT9XcHLKaI3tGvRdV', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '50000', '', '', '2024-07-21 10:17:33.269785', '', '');
+(85, 'J5WcZO4dMuoVTRtznsiE', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '100', '', '', '2024-09-12 16:00:25.502924', '', ''),
+(86, '0D7v1r2PMQN3bHtqcS9O', '50', 'Durga Bhavani Y', '937468501', 'Current account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '20000', '', '', '2024-09-12 16:16:16.474300', '', ''),
+(87, 'WT5aGFuoN8tbhLDSVl2E', '50', 'Durga Bhavani Y', '937468501', 'Current account ', '', 'Transfer', 'Success ', '22', 'SRM NAGAR', '6182', '200', '', '714956823', '2024-09-12 16:16:38.020177', '<br /><b>Warning</b>:  Undefined variable $DB_con in <b>C:\\Users\\Varshitha\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_ajax.php</b> on line <b>20</b><br /><br /><b>Fatal error</b>:  Uncaught Error', '<br /><b>Warning</b>:  Undefined variable $DB_con in <b>C:\\Users\\Varshitha\\Documents\\GitHub\\online-banking-PHP\\admin\\pages_ajax.php</b> on line <b>34</b><br /><br /><b>Fatal error</b>:  Uncaught Error'),
+(88, 'Fml24Te8nNEZUdypLG37', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Transfer', 'Success ', '22', 'SRM NAGAR', '6182', '20', '9390475897', '937468501', '2025-01-08 13:32:51.762848', 'bhavani', 'hi'),
+(89, 'qGVEXsFHgQubmNcT6AYk', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Transfer', 'Success ', '22', 'SRM NAGAR', '6182', '20', '9390475897', '937468501', '2025-01-08 13:35:11.698880', 'bhavani', 'hi'),
+(90, 'NhOGpCRE4TyDjnKtmiHe', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Withdrawal', 'Success ', '22', 'SRM NAGAR', '6182', '5', '', '', '2025-01-09 13:46:42.398542', '', ''),
+(91, 'WMtc9GF1AhdvXyeoQYTu', '51', 'Mummadi Venkata Pavan Kumar', '714956823', 'Recurring deposit ', '', 'Deposit', 'Success ', '21', 'POTHERI', '9857', '20000', '', '', '2025-01-10 05:22:33.776352', '', ''),
+(92, 'vF7pBzkw2AfYtT8bdOa4', '47', 'Saiganesh Raju Gottam', '893450712', 'Fixed Deposit Account ', '', 'Deposit', 'Success ', '22', 'SRM NAGAR', '6182', '10000', '', '', '2025-01-10 05:52:29.510652', '', '');
 
 -- --------------------------------------------------------
 
@@ -416,7 +433,8 @@ ALTER TABLE `ib_systemsettings`
 -- Indexes for table `ib_transactions`
 --
 ALTER TABLE `ib_transactions`
-  ADD PRIMARY KEY (`tr_id`);
+  ADD PRIMARY KEY (`tr_id`),
+  ADD KEY `created_at` (`created_at`);
 
 --
 -- Indexes for table `ib_user`
@@ -462,19 +480,19 @@ ALTER TABLE `ib_bankaccounts`
 -- AUTO_INCREMENT for table `ib_clients`
 --
 ALTER TABLE `ib_clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `ib_notifications`
 --
 ALTER TABLE `ib_notifications`
-  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `ib_staff`
 --
 ALTER TABLE `ib_staff`
-  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `ib_systemsettings`
@@ -486,7 +504,7 @@ ALTER TABLE `ib_systemsettings`
 -- AUTO_INCREMENT for table `ib_transactions`
 --
 ALTER TABLE `ib_transactions`
-  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `ib_user`
