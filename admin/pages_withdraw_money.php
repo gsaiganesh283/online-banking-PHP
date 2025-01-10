@@ -45,14 +45,16 @@ if (isset($_POST['withdrawal'])) {
     } else {
 
 
-        //Insert Captured information to a database table
-        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type,  tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt, client_phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        $notification = "INSERT INTO  iB_notifications (notification_details) VALUES (?)";
+        // Insert Captured information to a database table
+        $query = "INSERT INTO iB_Transactions (tr_code, account_id, name, account_number, acc_type, tr_type, tr_status, client_id, client_name, client_national_id, transaction_amt) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        $notification = "INSERT INTO iB_notifications (notification_details) VALUES (?)";
         $stmt = $mysqli->prepare($query);
         $notification_stmt = $mysqli->prepare($notification);
-        //bind paramaters
-        $rc = $stmt->bind_param('ssssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt, $phone);
+
+        // Bind parameters
+        $rc = $stmt->bind_param('sssssssssss', $tr_code, $account_id, $name, $account_number, $acc_type, $tr_type, $tr_status, $client_id, $client_name, $client_national_id, $transaction_amt);
         $rc = $notification_stmt->bind_param('s', $notification_details);
+
         $stmt->execute();
         $notification_stmt->execute();
         //declare a varible which will be passed to alert function
@@ -161,10 +163,7 @@ if (isset($_POST['withdrawal'])) {
                                                     <label for="exampleInputPassword1">Client National ID No.</label>
                                                     <input type="text" readonly value="<?php echo $row->client_national_id; ?>" name="client_national_id" required class="form-control" id="exampleInputEmail1">
                                                 </div>
-                                                <div class=" col-md-4 form-group">
-                                                    <label for="exampleInputEmail1">Client Phone Number</label>
-                                                    <input type="text" readonly name="phone" value="<?php echo $row->client_phone; ?>" required class="form-control" id="exampleInputEmail1">
-                                                </div>
+                                                
                                             </div>
 
                                             <div class="row">
