@@ -144,7 +144,7 @@
                 </li>
     -->
                 <li class="nav-item">
-                  <a href="pages_manage_acc_openings.php" class="nav-link">
+                  <a href="pages_update_user_accounts.php" class="nav-link">
                     <i class="fas fa-cog nav-icon"></i>
                     <p>Manange Acc Openings</p>
                   </a>
@@ -192,7 +192,7 @@
               </li>
               -->
                 <li class="nav-item">
-                  <a href="pages_balance_enquiries.php" class="nav-link">
+                  <a href="pages_check_client_acc_balance.php" class="nav-link">
                     <i class="fas fa-money-bill-alt nav-icon"></i>
                     <p>Balance Enquiries</p>
                   </a>
