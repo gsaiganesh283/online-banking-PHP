@@ -98,7 +98,6 @@ $stmt->close();
 
 
 ?>
-<!-- Log on to codeastro.com for more projects! -->
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -252,8 +251,7 @@ $stmt->close();
                       <i class="fas fa-times"></i>
                     </button>
                   </div>
-                </div><!-- Log on to codeastro.com for more projects! -->
-                <!-- /.card-header -->
+                </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
@@ -337,7 +335,7 @@ $stmt->close();
                       <i class="fas fa-times"></i>
                     </button>
                   </div>
-                </div><!-- Log on to codeastro.com for more projects! -->
+                </div>
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <div class="table-responsive">
@@ -387,7 +385,7 @@ $stmt->close();
 
                       </tbody>
                     </table>
-                  </div><!-- Log on to codeastro.com for more projects! -->
+                  </div>
                   <!-- /.table-responsive -->
                 </div>
                 <!-- /.card-body -->

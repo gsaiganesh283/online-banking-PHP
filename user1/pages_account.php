@@ -59,7 +59,6 @@ if (isset($_POST['change_user_password'])) {
 
 
 ?>
-<!-- Log on to codeastro.com for more projects! -->
 <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
